@@ -1,0 +1,58 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700&family=Pacifico&family=Roboto+Slab:wght@400;500;600;800&display=swap');
+.image img{
+    max-width: 100%;
+    height: 400px   ;
+}
+.card-bd{
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+    text-align: center;
+}
+.card-bd h4{
+    font-size: 10pt;
+}
+.card_slider{
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+}
+.card-bd-slider {
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.card-bd-slider h4{
+    font-size: 10pt;
+    font-family: 'Abhaya Libre', serif;
+    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+    
+}
+.card-bd-slider .btn-group {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    
+}
+.card-bd-slider .btn-group  a{
+    color: black;
+    background-color: #D4D0D0;
+}
+.card-bd-slider .btn-group  a:hover + {
+    background-color: white;
+}
+
+@media screen and (max-width: 568px) {
+    .card-bd{
+        width: 100%;
+        height: 100px;
+    }
+}
