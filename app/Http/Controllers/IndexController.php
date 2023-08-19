@@ -13,7 +13,9 @@ class IndexController extends Controller
     public function home(){
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
         $truyen = Truyen::orderBy('id','DESC')->where('kichhoat',0)->get();
-        return view('page.home')->with(compact('danhmuc','truyen'));
+
+        $chapter = Chapter::orderBy('id','ASC')->get();
+        return view('page.home')->with(compact('danhmuc','truyen','chapter'));
     }
     public function danhmuc($slug){
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
@@ -44,18 +46,18 @@ class IndexController extends Controller
 
         $slug_truyen = Truyen::with('danhmuctruyen')->where('slug_truyen',$slug_truyen)->where('kichhoat',0)->first();
 
-        $truyen = Chapter::where('slug_chapter',$slug_chapter)->first();
-        // dd($truyen);
+        $truyen = Chapter::with('truyen')->where('slug_chapter',$slug_chapter)->where('truyen_id',$slug_truyen->id)->first();
+        
         $chapter = Chapter::with('truyen')->where('slug_chapter',$slug_chapter)->where('truyen_id',$truyen->truyen_id)->first();
         
         $allchapter = Chapter::with('truyen')->orderBy('id','ASC')->where('truyen_id',$truyen->truyen_id)->get();
 
-        $next_chapter = Chapter::where('truyen_id',$truyen->truyen_id)->where('id','>',$chapter->id)->min('slug_chapter');
+        $next_chapter = Chapter::where('truyen_id',$truyen->truyen_id)->where('id','>',$chapter->id)->orderBy('id')->value('slug_chapter');
 
-        $previous_chapter = Chapter::where('truyen_id',$truyen->truyen_id)->where('id','<',$chapter->id)->max('slug_chapter');
+        $previous_chapter = Chapter::where('truyen_id',$truyen->truyen_id)->where('id','<',$chapter->id)->orderByDesc('id')->value('slug_chapter');
 
         $max_id = Chapter::where('truyen_id',$truyen->truyen_id)->orderBy('id','DESC')->first();
-
+        
         $min_id = Chapter::where('truyen_id',$truyen->truyen_id)->orderBy('id','ASC')->first();
 
         return view('page.chapter')->with(compact('danhmuc','chapter','allchapter','next_chapter','previous_chapter','max_id','min_id','slug_truyen'));

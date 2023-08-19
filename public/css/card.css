@@ -1,58 +1,75 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700&family=Pacifico&family=Roboto+Slab:wght@400;500;600;800&display=swap');
-.image img{
-    max-width: 100%;
-    height: 400px   ;
-}
-.card-bd{
-    width: 100%;
-    height: 70px;
-    padding: 5px;
-    text-align: center;
-}
-.card-bd h4{
-    font-size: 10pt;
-}
-.card_slider{
+
+.card-comic{
+    border: solid 1px;
+    margin: 0 auto;
+    border-radius: 18px;
     position: relative;
-    border-radius: 5px;
-    border: 1px solid #dee2e6;
-}
-.card-bd-slider {
-    width: 100%;
-    height: 70px;
-    padding: 5px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-.card-bd-slider h4{
-    font-size: 10pt;
-    font-family: 'Abhaya Libre', serif;
-    font-family: 'Pacifico', cursive;
-    font-family: 'Roboto Slab', serif;
-    font-weight: 500;
-    
-}
-.card-bd-slider .btn-group {
-    position: absolute;
-    bottom: 70px;
-    left: 0;
-    
-}
-.card-bd-slider .btn-group  a{
-    color: black;
-    background-color: #D4D0D0;
-}
-.card-bd-slider .btn-group  a:hover + {
-    background-color: white;
 }
 
-@media screen and (max-width: 568px) {
-    .card-bd{
-        width: 100%;
-        height: 100px;
-    }
+.image{
+    margin: auto;
+    cursor: pointer;
+}
+
+.image figure {
+    margin: auto 0;
+	padding: 5px;
+	background: #fff;
+	overflow: hidden;
+    border-radius: 15px;
+}
+.image  figure img{
+    border-radius: 15px;
+    width: 100%;
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+
+}
+.card-comic:hover .image figure img{
+    -webkit-transform: scale(1.3);
+	transform: scale(1.3);
+    
+}
+
+.Name{
+    position: relative;
+    margin: auto 5px;
+    margin-bottom: 10px;
+    top: 10px;
+    border-radius: 10px;
+    background-color: #DADADA;
+    cursor: pointer;
+}
+.Name p {
+    padding-top: 4px;
+    padding-left: 5px;
+    font-size: 13pt;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+.chapter{
+    display: none;
+    
+    
+}
+
+.card-comic:hover .chapter {
+    display: block;
+    position: absolute;
+    width: 100%;
+    border: solid 1px;
+    background-color: white;
+    border-radius: 15px;
+    bottom: 0;
+
+}
+.card-comic:hover .show-chapter{
+    margin: auto 15px;
+    cursor: pointer;
 }

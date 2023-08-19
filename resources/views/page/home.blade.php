@@ -3,61 +3,65 @@
                 @include('page.slider')
             @endsection
             @section('content')
+            @vite([ 'public/css/card.css' ,'public/js/cursor.js'] )
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
                     <h3>Truyện mới</h3>
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xl-5 g-3">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xl-4 ">
                             @foreach($truyen as $key => $value)
                                 <div class="col ">
-                                    <div class="card shadow-sm card_view" >
+                                        <div class="card-comic" title="{{$value->tentruyen}}">
                                             <div class="image">
-                                                <img  class="bd-placeholder-img card-img-top" src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" >
-                                                </img>
+                                                <figure><img src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" alt=""></figure>
                                             </div>
-                                            <div class="card-bd">
-                                                <h4>{{$value->tentruyen}}</h4>
+                                            <div class="Name">
+                                                <p >
+                                                <!-- Đoạn php này dùng để kiểm tra ký tự nếu vượt số ký tự kiểm tra thì sẽ trả về ... từ ký tự thứ 0  -->
+                                                <!-- @php
+                                                    if(strlen($value->tentruyen) <=20){
+                                                        echo $value->tentruyen;
+
+                                                    }else{
+                                                        echo substr($value->tentruyen,0,20).'...';
+                                                    }
+                                                @endphp -->
+                                                {{$value->tentruyen}}
+                                                </p>
                                             </div>
-                                            <div>
-                                                <a href="{{url('xem-truyen/'.$value->slug_truyen)}}" type="button" class="btn btn-sm btn-outline-secondary" >Đọc ngay</a>
-                                                    <a type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye"></i>99999</a>
+                                            <div class="chapter">
+                                                <div class="show-chapter">
+                                                @php
+                                                    $chapterCount = 0;
+                                                @endphp
+                                                @foreach($chapter as $key => $chap)
+                                                    @if($value->id == $chap->truyen_id && $chapterCount < 2)
+                                                        @php
+                                                            $chapterCount++; 
+                                                        @endphp
+                                                            <p><a href="{{url('xem-truyen/'.$value->slug_truyen.'/'.$chap->slug_chapter)}}">✿ {{$chap->tieude}}</a></p>       
+                                                    
+                                                    @endif
+                                                @endforeach
+
+                                                @foreach($chapter as $key => $chap)
+                                                    @if($value->id != $chap->truyen_id && $chapterCount == 0)
+                                                        @php
+                                                            $chapterCount++; 
+                                                        @endphp
+                                                            <p>Chưa có chapter</p>       
+                                                    
+                                                    @endif
+                                                @endforeach
+                                                </div>
                                             </div>
-                                            <!-- hover -->
-                                    <style>
-                                        .col-hover{
-                                            display: none;
-                                        }
-                                        .card_view{
-                                            position: relative;
-                                        }
-                                        .card_view:hover .col-hover{
-                                            position: absolute;
-                                            display: block;
-                                            
-                                        }
-                                    </style>
-                                    <div class="card shadow-sm col-hover" >
-                                            <div class="image">
-                                                <img  class="bd-placeholder-img card-img-top" src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" >
-                                                </img>
-                                            </div>
-                                            <div class="card-bd">
-                                                <h4>{{$value->tentruyen}}</h4>
-                                            </div>
-                                            <div>
-                                                <a href="{{url('xem-truyen/'.$value->slug_truyen)}}" type="button" class="btn btn-sm btn-outline-secondary" >Đọc ngay</a>
-                                                    <a type="button" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye"></i>99999</a>
-                                            </div>
-                                            
-                                    </div>
-                                    </div>
+                                        </div>
                                 </div>
-                               
                             @endforeach
                         </div>
                         <a class="btn btn-success mt-3" href="">Xem tất cả</a>
                     </div>
                 </div>
-
+            
                 
             @endsection
