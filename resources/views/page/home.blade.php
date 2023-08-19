@@ -3,7 +3,7 @@
                 @include('page.slider')
             @endsection
             @section('content')
-            @vite([ 'public/css/card.css' ,'public/js/cursor.js'] )
+            @vite([ 'public/css/card.css'])
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
