@@ -59,6 +59,11 @@
                                         <a href="{{route('truyen.chapter.create',[$truyen->id])}}" class="btn btn-primary">Add chapter</a> 
                                     
                                     </div>
+                                    <div class="mt-1">
+                                    
+                                        <a href="{{route('truyen.view_chapter',[$truyen->id])}}" class="btn btn-primary">Chapter</a> 
+                                    
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

@@ -6,13 +6,13 @@
     margin: 0 auto;
     border-radius: 18px;
     position: relative;
-    
+    margin-bottom: 20px;
 }
 
 .image{
     margin: auto;
     cursor: pointer;
-    
+
 }
 
 .image figure {
@@ -65,9 +65,10 @@
 .card-comic:hover .chapter {
     display: block;
     position: absolute;
-    width: 100%;
+    width: 97%;
     border: solid 1px #DADADA;
     background-color: #DADADA;
+    margin: 5px;
     border-radius: 15px;
     bottom: 0;
 
@@ -75,4 +76,16 @@
 .card-comic:hover .show-chapter{
     margin: auto 15px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1024px) {
+    .image figure {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .image figure {
+        height: 200px;
+    }
 }

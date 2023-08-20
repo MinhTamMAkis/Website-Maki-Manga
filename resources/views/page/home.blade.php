@@ -8,7 +8,7 @@
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
                     <h3>Truyện mới</h3>
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xl-4 ">
+                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xl-4 ">
                             @foreach($truyen as $key => $value)
                                 <div class="col ">
                                         <div class="card-comic" title="{{$value->tentruyen}}">

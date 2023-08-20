@@ -253,4 +253,12 @@ class TruyenController extends Controller
         return redirect()->back()->with('status','Đã thêm chapter thành công');
         
     }
+
+    public function view_chapter($id){
+        $id_truyen = Truyen::find($id);
+        $list_truyen = Truyen::with('danhmuctruyen')->orderBy('id','DESC')->get();
+        $list_chapter = Chapter::with('truyen')->orderBy('id','DESC')->get();
+        $tentruyen= Truyen::where('id','=',$id)->first();
+        return view('admincp.truyen.view_chapter')->with(compact('list_truyen','id_truyen','list_chapter','tentruyen',));
+    }
 }
