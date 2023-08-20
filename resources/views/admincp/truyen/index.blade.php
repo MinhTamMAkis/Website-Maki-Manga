@@ -46,12 +46,18 @@
                                 </td>
                                 <td>
                                     <div class="d-flex gap-1">
-                                        <a href="{{route('truyen.edit',[$truyen->id])}}" class="btn btn-primary">edit</a>
+                                        <a href="{{route('truyen.edit',[$truyen->id])}}" class="btn btn-primary">Edit</a>
                                         <form action="{{route('truyen.destroy',[$truyen->id])}}" method="POST">
                                             @method('DELETE')
                                             @csrf
-                                            <button onclick="return confirm('Bạn chắc chắn muốn xóa truyện này ?')" class="btn btn-danger">delete</button>
-                                        </form>      
+                                            <button onclick="return confirm('Bạn chắc chắn muốn xóa truyện này ?')" class="btn btn-danger">Delete</button>
+                                        </form>
+                                        
+                                    </div>
+                                    <div class="mt-1">
+                                    
+                                        <a href="{{route('truyen.chapter.create',[$truyen->id])}}" class="btn btn-primary">Add chapter</a> 
+                                    
                                     </div>
                                 </td>
                             </tr>

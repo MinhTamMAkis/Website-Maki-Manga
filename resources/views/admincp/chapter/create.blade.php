@@ -53,7 +53,12 @@
                             <label for="kichhot" class="form-label">Thuộc truyện</label>
                             <select name="truyen_id" class="form-select" >
                                 @foreach($truyen as $key => $value)
-                                    <option value="{{$value->id}}">{{$value->tentruyen}}</option>
+                                    <option value="{{$value->id}}" >
+                                    <img src="{{asset('public/upload/truyen/'.$value->hinhanh)}}" alt="" height="150" width="150"></td>
+                                        {{$value->tentruyen}}
+                                        </div>
+
+                                    </option>
                                 @endforeach
                             </select> 
                         </div>

@@ -6,11 +6,13 @@
     margin: 0 auto;
     border-radius: 18px;
     position: relative;
+    
 }
 
 .image{
     margin: auto;
     cursor: pointer;
+    
 }
 
 .image figure {
@@ -19,6 +21,7 @@
 	background: #fff;
 	overflow: hidden;
     border-radius: 15px;
+    height: 400px;
 }
 .image  figure img{
     border-radius: 15px;
@@ -63,8 +66,8 @@
     display: block;
     position: absolute;
     width: 100%;
-    border: solid 1px;
-    background-color: white;
+    border: solid 1px #DADADA;
+    background-color: #DADADA;
     border-radius: 15px;
     bottom: 0;
 

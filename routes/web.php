@@ -25,6 +25,8 @@ Route::get('/xem-truyen/{slug}', [IndexController::class,'xemtruyen'])->name('xe
 Route::get('/xem-truyen/{slug_truyen}/{slug_chapter}', [IndexController::class,'xemchapter']);
 Route::get('/tim-kiem', [IndexController::class,'timkiem']);
 
+Route::get('/truyen/chapter/create/{id}', [TruyenController::class,'createchapter'])->name('truyen.chapter.create');
+
 Auth::routes();
 Route::get('/admin', [HomeController::class, 'index'])->name('admin');
 

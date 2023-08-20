@@ -34,6 +34,9 @@ class ChapterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    
+
     public function store(Request $request)
     {
         
@@ -64,9 +67,10 @@ class ChapterController extends Controller
         $chapter->noidung = $data['noidung'];
         $chapter->kichhoat = $data['kichhoat'];
         $chapter->truyen_id = $data['truyen_id'];
-
+        
         $truyen = Truyen::where('id',$chapter->truyen_id)->first();
         $slug_truyen = $truyen->slug_truyen;
+        
         
         //thêm nhiều hình ảnh của chapter
         $file = $request->hinhanh;
@@ -221,5 +225,9 @@ class ChapterController extends Controller
         return redirect()->back()->with('status', 'Xóa tap này thành công');
 
     }
+
+
+
+    
     
 }
