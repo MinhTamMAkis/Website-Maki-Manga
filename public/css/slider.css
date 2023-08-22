@@ -1,0 +1,80 @@
+.card_slider{
+    transition: all 0.2s;
+    position: relative;
+    cursor: pointer;
+}
+.owl-item {
+    border-radius: 5px;
+}
+.owl-stage{
+   padding: 30px;
+}
+
+.card_slider  .view-silder{
+    height: 150px;
+    background: rgba(255,255,255,.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+}
+.card_slider  .view-silder img{
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.content-slider{
+    padding-left: 5px;
+    
+}
+.content-slider p{
+    font-size: 0.7rem;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.content-slider .button-click{
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+    
+}
+
+.content-slider .button-click a{
+    
+    align-items: center;
+    text-align: center;
+    
+}
+.circle {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(#b0e633, #53ef7d);
+    border-radius: 50%;
+    position: absolute;
+    animation: move-up6 2s ease-in infinite alternate-reverse;
+  }
+  
+  .circle:nth-child(1) {
+    top: -20px;
+    left: -20px;
+  }
+  
+  .circle:nth-child(2) {
+    bottom: -20px;
+    right: -20px;
+    animation-name: move-down1;
+  }
+  
+  @keyframes move-up6 {
+    to {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes move-down1 {
+    to {
+      transform: translateY(10px);
+    }
+  }
