@@ -1,6 +1,6 @@
 
                 @vite([ 'public/css/slider.css'])
-                <h3>Truyện hay nên đọc</h3>
+                
                 <div class="owl-carousel owl-theme ">
                         @foreach($truyen as $key => $value)
                         <div class="card_slider">

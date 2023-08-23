@@ -8,26 +8,30 @@
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
                     <h3>Truyện mới</h3>
-                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4  row-cols-xl-4 ">
+                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 ">
                             @foreach($truyen as $key => $value)
                                 <div class="col ">
-                                        <div class="card-comic" title="{{$value->tentruyen}}">
+                                        <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
+                                        <div class="blob"></div>
+                                        <div class="blob-second"></div>
                                             <div class="image">
                                                 <figure><img src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" alt=""></figure>
                                             </div>
-                                            <div class="Name">
-                                                <p >
-                                                <!-- Đoạn php này dùng để kiểm tra ký tự nếu vượt số ký tự kiểm tra thì sẽ trả về ... từ ký tự thứ 0  -->
-                                                <!-- @php
-                                                    if(strlen($value->tentruyen) <=20){
-                                                        echo $value->tentruyen;
+                                            <div class="bg-name">
+                                                <div class="Name">
+                                                    <p >
+                                                    <!-- Đoạn php này dùng để kiểm tra ký tự nếu vượt số ký tự kiểm tra thì sẽ trả về ... từ ký tự thứ 0  -->
+                                                    <!-- @php
+                                                        if(strlen($value->tentruyen) <=20){
+                                                            echo $value->tentruyen;
 
-                                                    }else{
-                                                        echo substr($value->tentruyen,0,20).'...';
-                                                    }
-                                                @endphp -->
-                                                {{$value->tentruyen}}
-                                                </p>
+                                                        }else{
+                                                            echo substr($value->tentruyen,0,20).'...';
+                                                        }
+                                                    @endphp -->
+                                                    {{$value->tentruyen}}
+                                                    </p>
+                                                </div>
                                             </div>
                                             <div class="chapter">
                                                 <div class="show-chapter">
@@ -54,8 +58,11 @@
                                                     @endif
                                                 @endforeach
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
+                                    </a>   
                                 </div>
                             @endforeach
                         </div>
