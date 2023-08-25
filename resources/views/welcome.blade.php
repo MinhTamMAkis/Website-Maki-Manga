@@ -29,6 +29,8 @@
                 <!---------------- Slider ------------------>
                 @yield('slider')
                 <!---------------- Truyện Mới ------------------>
+                @include('page.comic_new')
+                <!---------------- Truyện Mới ------------------>
                 @yield('content')
                 <!---------------- Footer ------------------>
                 @include('page.footer');
@@ -45,7 +47,6 @@
                         nav: false,
                         margin:50,
                         stagePadding: 20,
-                        nav:true,
                         autoplay:true,
                         autoplayTimeout:3000,
                         autoplayHoverPause:true,

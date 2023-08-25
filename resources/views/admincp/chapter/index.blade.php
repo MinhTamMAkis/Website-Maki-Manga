@@ -24,6 +24,7 @@
                                 <th scope="col">Tóm tắt</th>
                                 <th scope="col">Truyện</th>
                                 <th scope="col">kích hoạt</th>
+                                <th scope="col">Ngày thêm</th>
                                 <th scope="col">quản lý</th>
                             </tr>
                         </thead>
@@ -42,6 +43,7 @@
                                         <span class="text text-danger">Khong kich hoat</span>
                                     @endif
                                 </td>
+                                <td>{{$chapter->create_at}}</td>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{route('chapter.edit',[$chapter->id])}}" class="btn btn-primary">edit</a>

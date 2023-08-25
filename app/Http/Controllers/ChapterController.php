@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Truyen;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
@@ -68,6 +69,7 @@ class ChapterController extends Controller
         $chapter->kichhoat = $data['kichhoat'];
         $chapter->truyen_id = $data['truyen_id'];
         
+        $chapter->create_at = Carbon::now('Asia/Ho_Chi_Minh');
         $truyen = Truyen::where('id',$chapter->truyen_id)->first();
         $slug_truyen = $truyen->slug_truyen;
         
@@ -93,8 +95,9 @@ class ChapterController extends Controller
             
             
         $chapter->hinhanh = json_encode($hinhanh);
-        
-        $chapter->save();
+        $truyen->update(['update_at' => Carbon::now('Asia/Ho_Chi_Minh')]);
+        $truyen->update_at = Carbon::now('Asia/Ho_Chi_Minh');
+        $truyen->save();
         return redirect()->back()->with('status','Đã thêm chapter thành công');
         
     }

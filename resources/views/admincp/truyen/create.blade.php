@@ -30,7 +30,10 @@
                             <input type="text" class="form-control" value="{{old('tentruyen')}}" name="tentruyen" onkeyup="ChangeToSlug();" id="slug" aria-describedby="Tên truyện ....">
                         </div>
 
-                        
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">Tên Khac</label>
+                            <input type="text" class="form-control" value="{{old('tenkhac')}}" name="tenkhac"  id="tenkhac" aria-describedby="Tên khác ....">
+                        </div>
                         <div class="mb-3">
                             <label for="slug" class="form-label">Tác giả</label>
                             <input type="text" class="form-control" value="{{old('tac_gia')}}" name="tac_gia" onkeyup="ChangeToSlug();" id="slug" aria-describedby="Tác giả....">

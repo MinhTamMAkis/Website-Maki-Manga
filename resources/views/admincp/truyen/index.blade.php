@@ -25,10 +25,12 @@
                                 <th scope="col">SUMMARY</th>
                                 <th scope="col">CATEGORY</th>
                                 <th scope="col">STATUS</th>
+                                <th scope="col">UPDATE DAY</th>
                                 <th scope="col">MANAGE</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
+                        
                             @foreach($list_truyen as $key => $truyen)
                             <tr>
                                 <th scope="row">{{$key}}</th>
@@ -44,6 +46,7 @@
                                         <span class="text text-danger">Khong kich hoat</span>
                                     @endif
                                 </td>
+                                <th scope="col">{{$truyen->update_at}}</th>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{route('truyen.edit',[$truyen->id])}}" class="btn btn-primary">Edit</a>

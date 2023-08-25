@@ -57,7 +57,7 @@
     width: 100%
 }
 
-.owl-carousel .owl-dots.disabled,.owl-carousel  .disabled {
+.owl-carousel .owl-dots.disabled,.owl-carousel .owl-nav.disabled {
     display: none
 }
 
@@ -65,7 +65,7 @@
     display: block
 }
 
-.owl-carousel .owl-dot,.owl-carousel   .owl-next,.owl-carousel   .owl-prev {
+.owl-carousel .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev {
     cursor: pointer;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -74,7 +74,13 @@
     user-select: none
 }
 
-
+.owl-carousel .owl-nav button.owl-next,.owl-carousel .owl-nav button.owl-prev,.owl-carousel button.owl-dot {
+    background: 0 0;
+    color: inherit;
+    border: none;
+    padding: 0!important;
+    font: inherit
+}
 
 .owl-carousel.owl-loading {
     opacity: 0;

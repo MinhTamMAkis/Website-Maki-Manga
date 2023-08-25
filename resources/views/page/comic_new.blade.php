@@ -1,16 +1,12 @@
-        @extends('../welcome') 
-            @section('slider')
-                @include('page.slider')
-            @endsection
-            @section('content')
+
             @vite([ 'public/css/card.css'])
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
-                    <h3>Truyện mới</h3>
+                    <h3>Truyện mới cập nhật</h3>
                     
                         <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 ">
-                            @foreach($truyen as $key => $value)
+                            @foreach($truyen_new as $key => $value)
                                 <div class="col ">
                                         <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
                                         <div class="blob"></div>
@@ -67,12 +63,7 @@
                             @endforeach
                         </div>
                         
-                        {{$truyen->links()}}
-                        <a class="btn btn-success mt-3" href="">Xem tất cả</a>
+                            
                         </div>
-                        
                     </div>
                 </div>
-            
-                
-            @endsection

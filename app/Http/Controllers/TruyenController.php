@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Chapter;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -51,11 +52,12 @@ class TruyenController extends Controller
                 'hinhanh' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
                 'kichhoat' => 'required',
                 'tac_gia' => 'required',
-                'danhmuc' => 'required'
+                'danhmuc' => 'required',
+                'tenkhac' => 'nullable'
 
             ],[
                 'tentruyen.required' => 'Tên truyện phải có ',
-                'tac_gia.required' => 'TêTác giả phải có ',
+                'tac_gia.required' => 'Tên tác giả phải có ',
                 'tomtat.required' => 'Tóm tắt truyện phải có ',
                 'tentruyen.unique' => 'Tên truyện đã có ',
                 'slug_truyen.unique' => 'Slug truyện đã có',
@@ -72,7 +74,8 @@ class TruyenController extends Controller
     $truyen->tomtat = $data['tomtat'];
     $truyen->danhmuc_id= $data['danhmuc'];
     $truyen->kichhoat = $data['kichhoat'];
-    
+    $truyen->tenkhac = $data['tenkhac'];
+    $truyen->update_at = Carbon::now('Asia/Ho_Chi_Minh');
     //themanhvaofloder
     $get_image = $request->hinhanh;
     $path ='public/upload/truyen/';
@@ -138,6 +141,7 @@ class TruyenController extends Controller
     $truyen->danhmuc_id= $data['danhmuc'];
     $truyen->kichhoat = $data['kichhoat'];
 
+    
     //themanhvaofloder
     $get_image = $request->hinhanh;
     if($get_image){
