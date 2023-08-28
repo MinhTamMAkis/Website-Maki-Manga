@@ -20,6 +20,7 @@ use App\Http\Controllers\TheLoaiController;
 */
 
 Route::get('/',[IndexController::class,'home']);
+Route::get('/all_comic',[IndexController::class,'comic_all']);
 Route::get('/danh-muc/{slug}', [IndexController::class,'danhmuc']);
 Route::get('/xem-truyen/{slug}', [IndexController::class,'xemtruyen'])->name('xem-truyen');
 Route::get('/xem-truyen/{slug_truyen}/{slug_chapter}', [IndexController::class,'xemchapter']);

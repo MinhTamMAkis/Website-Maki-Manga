@@ -5,10 +5,10 @@
                     <div class="container">
                     <h3>Truyện mới cập nhật</h3>
                     
-                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 ">
-                            @foreach($truyen_new as $key => $value)
-                                <div class="col ">
-                                        <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
+                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 repon_new">
+                            @foreach($truyen_new as $key => $value) 
+                                <div class="col " >
+                                        <div class="card-comic" id="data-container" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
                                         <div class="blob"></div>
                                             <div class="image">
                                                 <figure><img src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" alt=""></figure>
@@ -62,8 +62,11 @@
                                 </div>
                             @endforeach
                         </div>
-                        
-                            
-                        </div>
+                    </div>
                     </div>
                 </div>
+                <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+                
+
+                
+               

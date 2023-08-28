@@ -33,10 +33,11 @@
                                     </div>
                                 </div>
                             @endforeach
-                    @endif
+                   
                         </div>
                         <a class="btn btn-success mt-3" href="">Xem tất cả</a>
                     </div>
+                    @endif
                 </div>
 
             

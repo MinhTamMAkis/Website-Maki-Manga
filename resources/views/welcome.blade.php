@@ -26,12 +26,16 @@
                 <!---------------- Menu ------------------>
                 @include('page.nav')
                 <!---------------- END MENU ------------------>
+
+                
                 <!---------------- Slider ------------------>
                 @yield('slider')
-                <!---------------- Truyện Mới ------------------>
-                @include('page.comic_new')
-                <!---------------- Truyện Mới ------------------>
+                <!---------------- END Slider ------------------>
+                
+                @yield('comic_new')
                 @yield('content')
+                <!---------------- Truyện Mới ------------------>
+                
                 <!---------------- Footer ------------------>
                 @include('page.footer');
             </div>
@@ -40,51 +44,10 @@
 
                 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                <script type="text/javascript">
-                    $('.owl-carousel').owlCarousel({
-                        loop:true,
-                        dots: false,
-                        nav: false,
-                        margin:50,
-                        stagePadding: 20,
-                        autoplay:true,
-                        autoplayTimeout:3000,
-                        autoplayHoverPause:true,
-                        responsive:{
-                            0:{
-                                items:1
-                            },
-                            600:{
-                                items:2
-                            },
-                            1000:{
-                                items:3
-                            },
-                            1025:{
-                                items:4
-                            }
-                        }
-                    })
+                <script type="text/javascript" src="{{asset('public/js/slider_owl.js')}}"></script>
+                <script type="text/javascript" src="{{asset('public/js/select_chapter.js')}}">
                 </script>
-            <script type="text/javascript">
-                    $('.select-chapter').on('change',function(){
-                        var url = $(this).val();
-
-                        if(url){
-                            window.location = url;
-                            
-                        }
-                        return false;
-                    });
-                    
-                    current_chapter();
-
-                    function current_chapter() {
-                        var url = window.location; 
-                        $('.select-chapter').find('option[value="' + url + '"]').attr("selected", true);
-                    }
-
-                </script>
+                
     </body>
     
 </html>

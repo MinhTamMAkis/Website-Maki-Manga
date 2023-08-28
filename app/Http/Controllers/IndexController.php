@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Browser;
 use Illuminate\Http\Request;
 use App\Models\DanhmucTruyen;
 use App\Models\Truyen;
@@ -13,23 +13,30 @@ class IndexController extends Controller
     public function home(){
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
         $lastChapter = Chapter::orderByDesc('id')->first();
-        
-    
         $chapter = Chapter::orderBy('id','DESC')->get();
-        $truyen_new = Truyen::with('chapter')->orderBy('update_at','DESC')->where('kichhoat', 0)->paginate(6);
+        $truyen_new = Truyen::with('chapter')->orderBy('update_at','DESC')->where('kichhoat', 0)->take(6)->get();
         $truyen = Truyen::with('chapter')->orderBy('id','DESC')->where('kichhoat', 0)->paginate(12);
         return view('page.home')->with(compact('danhmuc','truyen','chapter','truyen_new'));
+    }
+
+    public function comic_all(){
+
+        $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
+        $lastChapter = Chapter::orderByDesc('id')->first();
+        $chapter = Chapter::orderBy('id','DESC')->get();
+        $truyen = Truyen::with('chapter')->orderBy('id','DESC')->where('kichhoat', 0)->paginate(12);
+        return view('page.all_comic')->with(compact('danhmuc','truyen','chapter'));
     }
     public function danhmuc($slug){
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
 
         $danhmuc_id = DanhmucTruyen::where('slug_',$slug)->first();
-        
+        $chapter = Chapter::orderBy('id','DESC')->get();
         $tendanhmuc = $danhmuc_id->tendanhmuc;
-
-        $truyen = Truyen::orderBy('id','DESC')->where('kichhoat',0)->where('danhmuc_id',$danhmuc_id->id)->get();
+        $truyen_new = Truyen::with('chapter')->orderBy('update_at','DESC')->where('kichhoat', 0)->take(6)->get();
+        $truyen = Truyen::orderBy('id','DESC')->where('kichhoat',0)->where('danhmuc_id',$danhmuc_id->id)->paginate(12);
         
-        return view('page.danhmuc')->with(compact('danhmuc','truyen','tendanhmuc'));
+        return view('page.danhmuc')->with(compact('danhmuc','truyen','tendanhmuc','truyen_new','chapter'));
     }
     public function xemtruyen($slug){
         //biến danh mục lấy id danh mục trong Models DanhmucTruyen

@@ -102,6 +102,11 @@
     cursor: pointer;
 }
 
+.repon_new{
+    height: 300px;
+    overflow: hidden;
+}
+
 @media (max-width: 1200px) {
     .image figure {
         height: 150px;
@@ -111,9 +116,18 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .repon_new{
+        height: 200px;
+    }
+}
+
 @media (max-width: 769px) {
     .bg-name{
         width: 94%;
+    }
+    .repon_new{
+        height: 200px;
     }
 }
 @media (max-width: 568px) {
@@ -122,6 +136,9 @@
     }
     .image figure {
         height: 200px;
+    }
+    .repon_new{
+        height: 250px;
     }
 }
 
@@ -155,3 +172,4 @@
         transform: rotateZ(360deg);
     }
 }
+

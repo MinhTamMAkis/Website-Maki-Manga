@@ -1,24 +1,20 @@
 @extends('../welcome') 
-            <!-- @section('slider')
+            @section('slider')
                 @include('page.slider')
-            @endsection -->
+            @endsection
+            
             @section('content')
+            @vite([ 'public/css/card.css'])
+
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
-                        
-                    @php
-                        $count =count($truyen);
-                    @endphp
-                    @if($count==0)
-                        <p>Truyện đang cập nhật .....</p>
-                    @else
-                        <p>Thể loại : {{$tendanhmuc}}</p>
-                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6">
+                    <h3>Truyện</h3>
+                    
+                    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 ">
                             @foreach($truyen as $key => $value)
-                            <div class="col">
-                            @vite([ 'public/css/card.css'])
-                                <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
+                                <div class="col ">
+                                        <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
                                         <div class="blob"></div>
                                             <div class="image">
                                                 <figure><img src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" alt=""></figure>
@@ -66,15 +62,17 @@
                                                 </div>
                                                 
                                             </div>
+                                            
+                                        </div>
                                     </a>   
                                 </div>
-                            </div>
                             @endforeach
-                    @endif
                         </div>
-                        <div class="d-flex justify-content-center">{{$truyen->links()}}</div>
+                            <div class="d-flex justify-content-center">{{$truyen->links()}}</div>
+                        </div>
+                        
                     </div>
                 </div>
-
             
+                
             @endsection

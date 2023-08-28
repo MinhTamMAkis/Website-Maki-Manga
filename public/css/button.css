@@ -1,0 +1,68 @@
+.button a {
+    text-decoration: none;
+    color: mediumspringgreen;
+  }
+.button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.3em 1em;
+    border: mediumspringgreen solid 0.15em;
+    border-radius: 0.25em;
+    color: mediumspringgreen;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border 300ms, color 300ms;
+    user-select: none;
+  }
+
+  .button a {
+    z-index: 1;
+  }
+  
+  .button:hover a{
+    color: black;
+  }
+  
+  .button:active {
+    border-color: teal;
+  }
+  
+  .button::after, .button::before {
+    content: "";
+    position: absolute;
+    width: 11em;
+    aspect-ratio: 1;
+    background: mediumspringgreen;
+    opacity: 50%;
+    border-radius: 50%;
+    transition: transform 500ms, background 300ms;
+  }
+  
+  .button::before {
+    left: 0;
+    transform: translateX(-10.5em);
+  }
+  
+  .button::after {
+    right: 0;
+    transform: translateX(10.5em);
+  }
+  
+  .button:hover:before {
+    transform: translateX(-0.1em);
+  }
+  
+  .button:hover:after {
+    transform: translateX(0.1em);
+  }
+  
+  .button:active:before,
+  .button:active:after {
+    background: teal;
+  }
+
+  

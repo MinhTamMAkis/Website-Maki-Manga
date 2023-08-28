@@ -51,7 +51,7 @@ class TruyenController extends Controller
                 'tomtat'  => 'required',
                 'hinhanh' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
                 'kichhoat' => 'required',
-                'tac_gia' => 'required',
+                'tac_gia' => 'nullable',
                 'danhmuc' => 'required',
                 'tenkhac' => 'nullable'
 
@@ -69,12 +69,21 @@ class TruyenController extends Controller
     );
     $truyen = new Truyen();
     $truyen->tentruyen = $data['tentruyen'];
-    $truyen->tac_gia =$data['tac_gia'];
+    
+    if(empty($data['tac_gia'])){
+        $truyen->tac_gia = 'Đang cập nhật';
+    }else{
+        $truyen->tac_gia =$data['tac_gia'];
+    }
     $truyen->slug_truyen = $data['slug_truyen'];
     $truyen->tomtat = $data['tomtat'];
     $truyen->danhmuc_id= $data['danhmuc'];
     $truyen->kichhoat = $data['kichhoat'];
-    $truyen->tenkhac = $data['tenkhac'];
+    if(empty($data['tenkhac'])){
+        $truyen->tenkhac = 'Đang cập nhật';
+    }else{
+        $truyen->tenkhac = $data['tenkhac'];
+    }
     $truyen->update_at = Carbon::now('Asia/Ho_Chi_Minh');
     //themanhvaofloder
     $get_image = $request->hinhanh;

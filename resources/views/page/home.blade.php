@@ -2,12 +2,18 @@
             @section('slider')
                 @include('page.slider')
             @endsection
+
+            @section('comic_new')
+                @include('page.comic_new')
+            @endsection
+            
             @section('content')
-            @vite([ 'public/css/card.css'])
+            @vite([ 'public/css/card.css','public/css/button.css'])
+
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3 bg-body-tertiary">
                     <div class="container">
-                    <h3>Truyện mới</h3>
+                    <h3>Truyện</h3>
                     
                         <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 ">
                             @foreach($truyen as $key => $value)
@@ -66,13 +72,10 @@
                                 </div>
                             @endforeach
                         </div>
-                        
-                        {{$truyen->links()}}
-                        <a class="btn btn-success mt-3" href="">Xem tất cả</a>
+                        <button class="button" ><a href="{{url('all_comic')}}">Xem tất cả</a> </button>
                         </div>
                         
                     </div>
                 </div>
-            
                 
             @endsection

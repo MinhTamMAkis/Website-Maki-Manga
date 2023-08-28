@@ -2,7 +2,7 @@
                 @vite([ 'public/css/slider.css'])
                 
                 <div class="owl-carousel owl-theme ">
-                        @foreach($truyen as $key => $value)
+                        @foreach($truyen_new as $key => $value)
                         <div class="card_slider">
                             <div class="circle"></div>
                             <div class="circle"></div>
