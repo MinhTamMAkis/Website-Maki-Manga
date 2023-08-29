@@ -24,8 +24,10 @@ class IndexController extends Controller
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
         $lastChapter = Chapter::orderByDesc('id')->first();
         $chapter = Chapter::orderBy('id','DESC')->get();
+        $truyen_new = Truyen::with('chapter')->orderBy('update_at','DESC')->where('kichhoat', 0)->take(6)->get();
         $truyen = Truyen::with('chapter')->orderBy('id','DESC')->where('kichhoat', 0)->paginate(12);
-        return view('page.all_comic')->with(compact('danhmuc','truyen','chapter'));
+        $truyen_count = Truyen::with('chapter')->orderBy('id','DESC')->where('kichhoat', 0)->get();
+        return view('page.all_comic')->with(compact('danhmuc','truyen','chapter','truyen_new','truyen_count'));
     }
     public function danhmuc($slug){
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();

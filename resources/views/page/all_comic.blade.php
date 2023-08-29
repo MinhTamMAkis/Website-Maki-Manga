@@ -4,7 +4,7 @@
             @endsection
             
             @section('content')
-            @vite([ 'public/css/card.css'])
+            @vite([ 'public/css/card.css' ,'public/css/pagination.css'])
 
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3 bg-body-tertiary">
