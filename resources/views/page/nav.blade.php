@@ -1,5 +1,24 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="container-fluid">
+<style>
+    
+   .navbar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgb(240,240,240);
+        background: linear-gradient(360deg, rgba(240,240,240,0.8099614845938375) 0%, rgba(255,255,255,1) 54%);
+        
+    }
+    .navbar-collapse.in {
+    overflow: hidden;
+    max-height: none !important;
+    height: auto !important;
+}
+</style>
+
+
+<nav class="nav navbar navbar-expand-lg ">
+                    <div class="container">
                         <a class="navbar-brand" href="#">Maki</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -31,11 +50,14 @@
                             </li>
 
                         </ul>
+
                         <form class="d-flex" role="search" action="{{url('tim-kiem')}}" method="GET">
                             @csrf
-                            <input class="form-control me-2" type="search" name="tukhoa" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                         </div>
                     </div>
                 </nav>
+
+

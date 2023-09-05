@@ -7,10 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
+    
     use HasFactory;
+    protected $dates = [
+        'create_at',
+        'update_at'
+    ];
     public $timestamps = false;
     protected $fillable =[
-        'truyen_id','tomtat','tieude','noidung','kichhoat','slug_chapter','hinhanh'
+        'truyen_id','tomtat','tieude','noidung','kichhoat','slug_chapter','hinhanh','create_at',
+        'update_at'
     ];
     protected $primaryKey = 'id';
     protected $table ='chapter';

@@ -46,7 +46,7 @@
                                         <span class="text text-danger">Khong kich hoat</span>
                                     @endif
                                 </td>
-                                <th scope="col">{{$truyen->update_at}}</th>
+                                <th scope="col"><p>{{$truyen->update_at}}</p></th>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{route('truyen.edit',[$truyen->id])}}" class="btn btn-primary">Edit</a>

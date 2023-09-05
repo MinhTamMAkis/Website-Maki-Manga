@@ -17,30 +17,36 @@
         <link rel="stylesheet" href="{{asset('public/css/owl.theme.default.min.css')}}">
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+        @vite([ 'public/css/card.css','public/css/button.css','public/css/truyen.css'])
     </head>
     <body class="antialiased">
-        
-        
+    @include('page.nav')
             <div class="container">
-                <!---------------- Menu ------------------>
-                @include('page.nav')
-                <!---------------- END MENU ------------------>
+                
+            
+            
+                <div class="container">
+                
+                    <!---------------- Menu ------------------>
+                    
+                    <!---------------- END MENU ------------------>
 
-                
-                <!---------------- Slider ------------------>
-                @yield('slider')
-                <!---------------- END Slider ------------------>
-                
-                @yield('comic_new')
-                @yield('content')
-                <!---------------- Truyện Mới ------------------>
-                
-                <!---------------- Footer ------------------>
-                @include('page.footer');
+                    
+                    <!---------------- Slider ------------------>
+                    <div class="content">
+                        @yield('slider')
+                            <!---------------- END Slider ------------------>
+                            
+                        @yield('comic_new')
+                        @yield('content')
+                    </div>
+                    <!---------------- Truyện Mới ------------------>
+                    
+                    <!---------------- Footer ------------------>
+                    @include('page.footer')
+                </div>
+
             </div>
-
-
 
                 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

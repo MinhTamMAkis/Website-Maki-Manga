@@ -15,6 +15,7 @@ class IndexController extends Controller
         $lastChapter = Chapter::orderByDesc('id')->first();
         $chapter = Chapter::orderBy('id','DESC')->get();
         $truyen_new = Truyen::with('chapter')->orderBy('update_at','DESC')->where('kichhoat', 0)->take(6)->get();
+        $getday = Truyen::orderBy('id','DESC')->get();
         $truyen = Truyen::with('chapter')->orderBy('id','DESC')->where('kichhoat', 0)->paginate(12);
         return view('page.home')->with(compact('danhmuc','truyen','chapter','truyen_new'));
     }
