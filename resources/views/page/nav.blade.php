@@ -1,7 +1,6 @@
 <style>
     
    .navbar {
-        position: sticky;
         top: 0;
         width: 100%;
         z-index: 1000;
@@ -51,9 +50,10 @@
 
                         </ul>
 
-                        <form class="d-flex" role="search" action="{{url('tim-kiem')}}" method="GET">
+                        <form autocomplete="off" class="d-flex" role="search" action="{{url('tim-kiem')}}" method="POST">
                             @csrf
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control me-2" id="keywords" name="tukhoa" type="search" placeholder="Search" aria-label="Search">
+                            <div id="sreach_ajax"></div>
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                         </div>
@@ -61,3 +61,30 @@
                 </nav>
 
 
+                <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+                <script>
+                    $('#keywords').keyup( function(){
+                        var keywords = $(this).val();
+                        
+                        if(keywords != ''){
+                            var _token = $('input[name="_token"]').val();
+
+                            $.ajax({
+                                url:"{{url('/timkiem-ajax')}}",
+                                method:'POST',
+                                data:{keywords:keywords,_token:_token},
+                                success:function(data){
+                                    $('#sreach_ajax').fadeIn();
+                                    $('#sreach_ajax').html(data);
+                                }
+                            });
+                        }else{
+                            $('#sreach_ajax').fadeOut();
+                        }
+
+                    });
+                    $(document).on('click','.li_search_ajax',function(){
+                        $('#keywords').val($this.text());
+                        $('#sreach_ajax').fadeOut();
+                    });
+                </script>

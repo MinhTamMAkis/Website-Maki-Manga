@@ -9,6 +9,23 @@ use App\Models\Truyen;
 use App\Models\Chapter;
 class IndexController extends Controller
 {
+
+
+    public function search_ajax(Request $request){
+        $data = $request->all();
+
+        if($data['keywords']){
+            $truyen = Truyen::where('kichhoat',0)->where('tentruyen','LIKE','%'.$data['keywords'].'%')->get();
+            $output =' <ul class="dropdown-menu" style="display:block;">';
+
+            foreach ($truyen as $key => $tr){
+                $output .='<li class="li_search_ajax"><ahref="#">'.$tr->tentruyen.'</ahref=></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
     //
     public function home(){
         $danhmuc = DanhmucTruyen::orderBy('id','DESC')->get();
@@ -77,10 +94,11 @@ class IndexController extends Controller
     }   
 
 
-    public function timkiem(){
+    public function timkiem(Request $request){
+        $data = $request->all();
         $truyen = Truyen::orderBy('id','DESC')->where('kichhoat',0)->get();
         $danhmuc= DanhmucTruyen::orderBy('id','DESC')->get();
-        $tukhoa = $_GET['tukhoa'];
+        $tukhoa = $data['tukhoa'];
 
         $truyen_tk = Truyen::with('danhmuctruyen')->where('tentruyen','LIKE','%'.$tukhoa.'%')->get();
         return view('page.timkiem')->with(compact('danhmuc','truyen','tukhoa','truyen_tk'));
