@@ -1,6 +1,6 @@
 
 <footer class="text-body-secondary py-5">
-                    <div class="container">
+                    <div class="container text-light">
                         <p class="float-end mb-1">
                         <a href="#">Back to top</a>
                         </p>

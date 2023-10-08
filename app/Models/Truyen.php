@@ -27,4 +27,7 @@ class Truyen extends Model
     public function chapter(){
         return $this->hasMany('App\Models\Chapter','truyen_id','id');
     }
+    public function thuocdanhmuctruyen(){
+        return $this->belongsToMany(DanhmucTruyen::class,'thuocdanhmuc','truyen_id','danhmuc_id');
+    }
 }

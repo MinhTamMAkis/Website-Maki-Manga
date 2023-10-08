@@ -1,8 +1,8 @@
 
                 <!---------------- Truyện mới ------------------>
-                <div class="album py-3 bg-body-tertiary">
+                <div class="album py-3 ">
                     <div class="container">
-                    <h3>Truyện</h3>
+                    <h3 class="text-light">Manga</h3>
                     
                         <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 ">
                             @foreach($truyen as $key => $value)
@@ -10,7 +10,7 @@
                                         <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
                                         <div class="blob"></div>
                                             <div class="image">
-                                                <figure><img src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" alt=""></figure>
+                                                <figure> <img src="{{ asset('public/upload/truyen/'.$value->hinhanh) }}" alt=""></figure>
                                             </div>
                                             <div class="bg-name">
                                                 <div class="Name">
@@ -38,9 +38,9 @@
                                                         @php
                                                             $chapterCount++; 
                                                         @endphp
-                                                            <div class="d-flex">
-                                                                <p><a href="{{url('xem-truyen/'.$value->slug_truyen.'/'.$chap->slug_chapter)}}">✿ {{$chap->tieude}}</a></p> - <p>{{ \Carbon\Carbon::parse($chap->create_at)->diffForHumans() }}</p>
-                                                               
+                                                            <div class="d-flex ">
+                                                                <p class=><a href="{{url('xem-truyen/'.$value->slug_truyen.'/'.$chap->slug_chapter)}}">✿ {{$chap->tieude}} </a> &ensp; </p><p class="text-light ">{{ \Carbon\Carbon::parse($chap->create_at)->diffForHumans() }}</p>
+                                                            
                                                             </div>
                                                                 
                                                     
@@ -52,7 +52,7 @@
                                                         @php
                                                             $chapterCount++; 
                                                         @endphp
-                                                            <p>Chưa có chapter</p>       
+                                                            <p class="text-light">Chưa có chapter</p>       
                                                     
                                                     @endif
                                                 @endforeach
@@ -65,7 +65,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <button class="button" ><a href="{{url('all_comic')}}">Xem tất cả</a> </button>
+                        <button class="button" ><a href="{{url('all_comic')}}">View All</a> </button>
                         </div>
                         
                     </div>

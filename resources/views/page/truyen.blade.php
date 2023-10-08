@@ -22,50 +22,84 @@
                                 
                             </div>
                             <div class="col-md-9 p-0 m-0 col-sm-12 info" >
-                                <style>
-                                    .view_infor{
-                                        background-image: url("{{ asset('public/upload/truyen/'.$truyen->hinhanh) }}"); 
-                                    }
-
-                                </style>
+                                <div class="view_infor">
+                                    <img  src="{{ asset('public/upload/truyen/'.$truyen->hinhanh) }}" alt="" >
+                                </div>
                                 <ul class="infortruyen bg-text">
+                                    <input type="hidden" value="{{$truyen->id}}" class="id_comic">
                                     <li>Name : {{$truyen->tentruyen}}</li>
-                                    <li>Tác giả : {{$truyen->tac_gia}}</li>
-                                    <li>Thể loại : <a href="{{url('danh-muc/'.$truyen->danhmuctruyen->slug_)}}">{{$truyen->danhmuctruyen->tendanhmuc}}</a></li>
-                                    <li>Số chapter : {{$count = count($chapter)}}</li>
-                                    <li>Số lược xem: 2000</li>
-
-                                    @if($chapter_dau)
+                                    <li>Author : {{$truyen->tac_gia}}</li>
+                                    <li class="category_list">
+                                            @foreach($danhmuc as $key => $dm)
+                                                @foreach($thuocdanhmuc as $key => $value)
+                                                    @if( $dm->id == $value->danhmuc_id)
+                                                        <a href="{{url('danh-muc/'.$dm->slug_)}}">{{$dm->tendanhmuc}}</a>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
+                                    </li>
+                                    <li>Views: 
+                                        @if($truyen->comic_view == "")
+                                            0
+                                        @else
+                                            {{$truyen->comic_view}}
+                                        @endif
+                                    </li>
+                                    <li>Update On: {{\Carbon\Carbon::parse($truyen->update_at)->format('d-m-Y')}}</li>
                                     
-                                    <li><a href="{{url('xem-truyen/'.$truyen->slug_truyen.'/'.$chapter_dau->slug_chapter)}}" class="btn btn-primary mt-3">Chapter đầu tiên</a></li>
-                                    
-                                    @else
-                                    <li ><a href="" class="btn btn-primary mt-3">Chưa có chap nào</a></li>
-                                @endif
                                 </ul>
-                                <div class="view_infor"></div>
+                                
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="content-truyen">{{$truyen->tomtat}}</p><hr>
-                        <h4>Mục lục</h4>
-                        <ul class="muclucchapter" >
-                            @php
-                                $count = count($chapter);
-                            @endphp
+                        
+                        <div class="row mt-3">
+                        
+                            <div class="col-md-5 text-light col-sm-12">
+                                <div data-id="{{$truyen->id}}" class="bookmark bookmark_color"><i class="far fa-bookmark" aria-hidden="true"></i> Bookmark</div>
+                                <p>{{$truyen->tomtat}}</p>
+                            </div>
+                            <div class="col-md-7 col-sm-12 ">
+                                @if($chapter_dau)
+                                        <div class="d-flex gap-2">
+                                            <button><a href="{{url('xem-truyen/'.$truyen->slug_truyen.'/'.$chapter_dau->slug_chapter)}}" class="btn-comic ">First Chapter</a></button>                @if($chapter_cuoi)
+                                            <button> <a href="{{url('xem-truyen/'.$truyen->slug_truyen.'/'.$chapter_cuoi->slug_chapter)}}" class="btn-comic">New Chapter</a></button></button>
+                                            @endif
+                                        </div>
+                                        @else
+                                        <button ><a href="" class="btn btn-primary ">There are no chapters yet</a></button>
+                                @endif
+                                
+                                <h4 class="text-light mt-4">CHAPTERS</h4>
+                                @php
+                                    $count = count($chapter);
+                                @endphp
 
-                            @if($count>0)
-                                @foreach($chapter as $key => $chap)
-                                    <li><a href="{{url('xem-truyen/'.$truyen->slug_truyen.'/'.$chap->slug_chapter)}}">{{$chap->tieude}} </a></li>
-                                @endforeach
-                            @else
-                                <li>Hiện tại chưa có chapter</li>
-                            @endif
-                        </ul>
+                                @if($count > 0)
+                                    <ul class="muclucchapter" id="desc">
+                                    @foreach($chapter as $key => $chap)
+                                        <li class="chapter-item" >
+                                            <a href="{{url('xem-truyen/'.$truyen->slug_truyen.'/'.$chap->slug_chapter)}}">{{$chap->tieude}}</a>
+                                            <p>{{\Carbon\Carbon::parse($chap->create_at)->format('d-m-Y H:i')}}</p>
+                                        </li>
+                                    
+                                    @endforeach
+                                    </ul>
+                                @else
+                                    <span class="text-light">There are currently no chapters</span>
+                                @endif
+                        
+                            </div>
+                        </div>
+                        <div class="comment">
+                        
+                            
+                        
+                        </div>
                     </div>
                 </div>
                 
             </div>
+
+
 
             @endsection

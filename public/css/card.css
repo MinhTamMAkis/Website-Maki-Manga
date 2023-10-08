@@ -33,6 +33,7 @@
 .image  figure img{
     border-radius: 15px;
     width: 100%;
+    height: 100%;
     -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
@@ -46,15 +47,16 @@
 }
 .bg-name{
     position: relative;
-    background: white;
+    background: rgba(255,255,255,.5);
     width: 95%;
     padding-top: 5px;
     height: 100%;
     display: flex;
-    border-radius: 0 0 15px 15px;
+    border-radius: 15px;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
+    
 }
 .Name{
     margin: auto 5px;
@@ -83,24 +85,28 @@
 }
 .chapter .show-chapter a{
     text-decoration: none;
-    color: black;
+    color: #fff;
 }
 .card-comic:hover .chapter {
     display: block;
     position: absolute;
     width: 95%;
     border: solid 1px #DADADA;
-    background: radial-gradient(#b0e633, #53ef7d);
+    background: radial-gradient(#6F3811,#B17B47);
     margin: 5px;
     border-radius: 15px;
     bottom: 0;
+   
     
 
 }
+
 .card-comic:hover .show-chapter{
     padding: 10px;
     cursor: pointer;
+    
 }
+
 
 .repon_new{
     height: 300px;
@@ -157,10 +163,11 @@
     position: absolute;
     content: ' ';
     display: block;
-    width: 160px;
+    width: 400%;
     height: 160%;
-    background: linear-gradient(90deg, transparent, #53ef7d, #53ef7d, #53ef7d, #53ef7d, transparent);
-    animation: rotation_481 5000ms infinite linear;
+    background: linear-gradient(90deg, transparent, #AC7C4C, #AC7C4C, #AC7C4C, #AC7C4C, transparent);
+    /* animation */
+    /* animation: rotation_481 5000ms infinite linear; */
 }
 
 @keyframes rotation_481 {

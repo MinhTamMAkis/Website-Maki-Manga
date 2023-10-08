@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\DanhmucTruyen;
 use App\Models\Truyen;
 use App\Models\TheLoai;
+use App\Models\ThuocDanhMuc;
 use Illuminate\Support\Facades\Storage;
 
 use function PHPUnit\Framework\fileExists;
@@ -75,10 +76,17 @@ class TruyenController extends Controller
     }else{
         $truyen->tac_gia =$data['tac_gia'];
     }
+
+    
     $truyen->slug_truyen = $data['slug_truyen'];
     $truyen->tomtat = $data['tomtat'];
-    $truyen->danhmuc_id= $data['danhmuc'];
     $truyen->kichhoat = $data['kichhoat'];
+
+    foreach($data['danhmuc'] as $key=> $value){
+        $truyen->danhmuc_id = $value[0];
+    }
+    
+    
     if(empty($data['tenkhac'])){
         $truyen->tenkhac = 'Đang cập nhật';
     }else{
@@ -93,8 +101,11 @@ class TruyenController extends Controller
     $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
     $get_image->move($path,$new_image);
     $truyen->hinhanh = $new_image;
-
+    
     $truyen->save();
+
+    $truyen->thuocdanhmuctruyen()->attach($data['danhmuc']);
+
     return redirect()->back()->with('status','Thêm truyện thành công');
     }
 
@@ -261,7 +272,6 @@ class TruyenController extends Controller
             
             
         $chapter->hinhanh = json_encode($hinhanh);
-        
         $chapter->save();
         return redirect()->back()->with('status','Đã thêm chapter thành công');
         

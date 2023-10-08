@@ -1,19 +1,22 @@
 @extends('../welcome') 
         @section('content')
-        <nav aria-label="breadcrumb">
+
+        <nav aria-label="breadcrumb" style="margin-top: 30px;">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{url('danh-muc/'.$slug_truyen->danhmuctruyen->slug_)}}">{{$slug_truyen->danhmuctruyen->tendanhmuc}}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="">{{$slug_truyen->tentruyen}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{url('xem-truyen/'.$slug_truyen->slug_truyen)}}">{{$slug_truyen->tentruyen}}</a></li>
                 </ol>
         </nav>
-            <h4>{{$chapter->truyen->tentruyen}}</h4>
+            <h4 class="text-light">{{$chapter->truyen->tentruyen}}</h4>
             <p class="d-flex justify-content-center">Chương hiện tại : {{$chapter->tieude}}</p>
 
 
             <style>
                 .isDisable{
-                    display: none;
+                     opacity: 0.6;
+                     pointer-events: none;
+                    cursor: default;
                 }
                 .chap-scroll{
                     position: sticky;
@@ -45,19 +48,20 @@
 
                     <!-- Content -->
                     <div class="d-flex justify-content-center text-center">
-                        <div class="noidung mt-3" >
+                        
                         @php
                             $images = json_decode($chapter->hinhanh, true);
                             asort($images); // Sort the images array alphabetically by their filenames
                         @endphp
-
+                        
                         @foreach($images as $image)
-                            <img src="{{ URL::to($image) }}" alt="" width="70%">
+                            <div class="noidung mt-3 d-flex justify-content-center text-center" >
+                                <img src="{{ URL::to($image) }}" alt="" width="70%">
+                            </div>
                         @endforeach
 
-                        </div>
                     </div>
                 </div>
 
-
+                
         @endsection

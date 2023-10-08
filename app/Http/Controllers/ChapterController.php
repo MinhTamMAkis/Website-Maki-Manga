@@ -62,6 +62,7 @@ class ChapterController extends Controller
             ]
         );
         $chapter = new Chapter();
+
         $chapter->tieude = $data['tieude'];
         $chapter->slug_chapter = $data['slug_chapter'];
         $chapter->tomtat = $data['tomtat'];
@@ -97,7 +98,7 @@ class ChapterController extends Controller
         $chapter->hinhanh = json_encode($hinhanh);
         $truyen->update(['update_at' => Carbon::now('Asia/Ho_Chi_Minh')]);
         $truyen->update_at = Carbon::now('Asia/Ho_Chi_Minh');
-        $truyen->save();
+        $chapter->save();
         return redirect()->back()->with('status','Đã thêm chapter thành công');
         
     }

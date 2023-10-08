@@ -51,11 +51,12 @@
 
                         <div class="mb-3">
                             <label for="kichhot" class="form-label">Danh mục truyện</label>
-                            <select name="danhmuc" class="form-select" >
                                 @foreach($danhmuc as $key => $muc)
-                                    <option value="{{$muc->id}}">{{$muc->tendanhmuc}}</option>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="danhmuc_{{$muc->id}}" value="{{$muc->id}}" name="danhmuc[]">
+                                    <label class="form-check-label" for="danhmuc_{{$muc->id}}">{{$muc->tendanhmuc}}</label>
+                                </div>
                                 @endforeach
-                            </select> 
                         </div>
 
                         <div class="mb-3">

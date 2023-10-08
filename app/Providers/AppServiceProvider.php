@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrap();
-        Carbon::setLocale('vi');
+        Carbon::setLocale('en');
     }
 }

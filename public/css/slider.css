@@ -37,6 +37,7 @@
     font-family: 'Pacifico', cursive;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+    color: aliceblue;
     
 }
 
@@ -56,7 +57,7 @@
 .circle {
     width: 100px;
     height: 100px;
-    background: radial-gradient(#b0e633, #53ef7d);
+    background: radial-gradient(#8e5724,#6F3811);
     border-radius: 50%;
     position: absolute;
     animation: move-up6 2s ease-in infinite alternate-reverse;

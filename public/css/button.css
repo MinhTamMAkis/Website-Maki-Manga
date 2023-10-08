@@ -1,6 +1,6 @@
 .button a {
     text-decoration: none;
-    color: mediumspringgreen;
+    color: rgb(117, 115, 115);
   }
 .button {
     all: unset;
@@ -8,9 +8,9 @@
     align-items: center;
     position: relative;
     padding: 0.3em 1em;
-    border: mediumspringgreen solid 0.15em;
+    border: rgb(160, 102, 51) solid 0.15em;
     border-radius: 0.25em;
-    color: mediumspringgreen;
+    color: rgb(160, 102, 51);
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
@@ -24,7 +24,7 @@
   }
   
   .button:hover a{
-    color: black;
+    color: rgb(255, 255, 255);
   }
   
   .button:active {
@@ -36,7 +36,7 @@
     position: absolute;
     width: 11em;
     aspect-ratio: 1;
-    background: mediumspringgreen;
+    background: rgb(160, 102, 51);
     opacity: 50%;
     border-radius: 50%;
     transition: transform 500ms, background 300ms;

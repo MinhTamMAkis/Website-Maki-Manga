@@ -12,44 +12,128 @@
     margin-top: 10px;
 }
 .infortruyen{
+    
+    width: 100%;
     list-style: none;
 }
+
 .info{
     position: relative;
+    overflow: hidden;
 }
 .view_infor{    
     position: absolute;
-    top: 0;
+    
+}
+
+
+.view_infor img {
+    max-width: 100%;
     z-index: -1;
-    width: 100%;
     /* Add the blur effect */
     filter: blur(8px);
     -webkit-filter: blur(8px);
-    
-    /* Full height */
-    height: 100%; 
-    
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
+
 .bg-text {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     color: white;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 80%;
-    padding: 20px;
+    width: 60%;
+    padding: 10px;
     text-align: center;
     }
+    .muclucchapter{
+        margin-top: 10px;
+        padding: 5px;
+        width: 100%;
+        height: 300px;
+        overflow: auto;
+        border: 3px solid #606060 ;
+        border-radius: 10px;
+        list-style: none;
+    }
+    .muclucchapter li {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        float: left;
+        width: 150px;
+        border: 1px solid #606060;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        
+       
+    }
+    .muclucchapter li a{
+        text-transform:capitalize;
+        text-decoration: none;
+        color: aliceblue;
+    }
+    .muclucchapter li p{
+       
+        color: rgba(252, 252, 252, 0.62);
+    }
+
+    .muclucchapter li:hover a{
+        color: #B17B47;
+    }
+
+    .category_list a{
+        text-decoration: none;
+        color: #fff;
+        background-color: #B17B47;
+        padding: 0 5px 0 5px;
+        border-radius: 5px;
+    }
+
+    button .btn-comic{
+        background-color: #B17B47;
+        padding: 10px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #fff;
+    }
+
+
+
+    .bookmark {
+        text-align: center;
+        font-size: 14px;
+        color: #FFF;
+        border-radius: 5px;
+        padding: 8px 5px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 15px;
+        
+    }
+    .bookmark_color{
+        background-color: #B17B47;
+    }
+
+
+
+
+
+
+
+
+
+
 
     @media (max-width: 567px)
     {
@@ -59,8 +143,11 @@
     
         }
         .info{
+    
+            
         }
         .view_infor{
+            margin-top: 10px;
             position: absolute;
             width: 90%;
             top: 50%;
@@ -68,8 +155,21 @@
             transform: translate(-50%, -50%);
         }
         .bg-text{
+            margin-top: 10px;
             position: relative;
 
         }
         
-    }             
+    }          
+    
+    @media (max-width: 769px)
+    {
+        .muclucchapter{
+            width: 100%;
+        }
+        .bg-text {
+            width: 70%;
+            font-size: 0.8rem;
+            padding: 5px;
+        }
+    }

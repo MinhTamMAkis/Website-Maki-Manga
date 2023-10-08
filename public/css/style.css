@@ -1,0 +1,31 @@
+body {
+    background-color: #16151D !important;
+}
+
+.btn-primary {
+    --bs-btn-border-color: none !important;
+}
+.btn:hover{
+    background-color: #B17B47 !important;
+    border-color: #B17B47 !important;
+}
+.btn {
+    
+}
+.breadcrumb-item + .breadcrumb-item::before{
+    color: rgb(243 243 243 / 75%) !important;
+
+}
+.breadcrumb-item a{
+    border: #9e540f 1px solid;
+    padding: 5px;
+    border-radius: 35% 10%;
+    text-decoration: none;
+}
+.breadcrumb-item a {
+    color: #9e540f !important;
+}
+.breadcrumb-item a:hover {
+    background-color: #B17B47;
+    color: #fff !important;
+}

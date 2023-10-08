@@ -1,9 +1,9 @@
 
             @vite([ 'public/css/card.css'])
                 <!---------------- Truyện mới ------------------>
-                <div class="album py-3 bg-body-tertiary">
+                <div class="album py-3 ">
                     <div class="container">
-                    <h3>Truyện mới cập nhật</h3>
+                    <h3 class="text-light">Latest Update</h3>
                     
                         <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6  row-cols-xl-6 repon_new">
                             @foreach($truyen_new as $key => $value) 
@@ -49,7 +49,7 @@
                                                         @php
                                                             $chapterCount++; 
                                                         @endphp
-                                                            <p>Chưa có chapter</p>       
+                                                            <p class="text-light">Chưa có chapter</p>       
                                                     
                                                     @endif
                                                 @endforeach

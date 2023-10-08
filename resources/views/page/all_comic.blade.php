@@ -7,7 +7,7 @@
             @vite([ 'public/css/card.css' ,'public/css/pagination.css'])
 
                 <!---------------- Truyện mới ------------------>
-                <div class="album py-3 bg-body-tertiary">
+                <div class="album py-3 ">
                     <div class="container">
                     <h3>Truyện</h3>
                     
