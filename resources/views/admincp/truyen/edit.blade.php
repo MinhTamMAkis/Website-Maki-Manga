@@ -42,19 +42,32 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="kichhot" class="form-label">Danh mục truyện</label>
+                            <!-- <label for="kichhot" class="form-label">Danh mục truyện</label>
                             <select name="danhmuc" class="form-select" >
                                 @foreach($danhmuc as $key => $muc)
                                     <option {{$muc->id==$truyen->danhmuc_id ? 'selected' : ''}} value="{{$muc->id}}">{{$muc->tendanhmuc}}</option>
                                 @endforeach
-                            </select> 
+                            </select>  -->
+                            <label for="danhmuc" class="form-label">Danh mục truyện</label>
+                                @foreach($danhmuc as $key => $muc)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="danhmuc_{{$muc->id}}" value="{{$muc->id}}" name="danhmuc[]">
+                                    <label class="form-check-label" for="danhmuc_{{$muc->id}}">{{$muc->tendanhmuc}}</label>
+                                </div>
+                                @endforeach
                         </div>
 
                         <div class="mb-3">
                             <label for="convert-slug" class="form-label">Hình ảnh</label><br>
-                            <input type="file" class="form-control-file"  name="hinhanh"><br>
-                            <img src="{{asset('public/upload/truyen/'.$truyen->hinhanh)}}" alt="" height="150" width="150">
+                            @if($truyen->hinhanh)
+                                <img src="{{ asset('public/upload/truyen/' . $truyen->hinhanh) }}" alt="" height="150" width="150"><br>
+                                <label for="hinhanh">Chọn hình ảnh mới nếu muốn thay đổi:</label>
+                            @else
+                                <label for="hinhanh">Chọn hình ảnh:</label>
+                            @endif
+                            <input type="file" class="form-control-file" name="hinhanh" >
                         </div>
+
 
                         <div class="mb-3">
                             <label for="kichhot" class="form-label">Kích hoạt truyện</label>

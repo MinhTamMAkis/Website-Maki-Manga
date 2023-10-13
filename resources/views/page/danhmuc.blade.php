@@ -1,7 +1,7 @@
 @extends('../welcome') 
-            <!-- @section('slider')
+            @section('slider')
                 @include('page.slider')
-            @endsection -->
+            @endsection
             @section('content')
                 <!---------------- Truyện mới ------------------>
                 <div class="album py-3">
@@ -20,7 +20,6 @@
                                     @if($tdm->truyen_id == $value->id)
                         
                                         <div class="col">
-                                        @vite([ 'public/css/card.css'])
                                             <div class="card-comic" title="{{$value->tentruyen}}"><a href="{{url('xem-truyen/'.$value->slug_truyen)}}">
                                                     <div class="blob"></div>
                                                         <div class="image">

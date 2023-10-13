@@ -46,10 +46,14 @@
                                 </li>
                                 
                             </ul>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
+                            
+                                <form autocomplete="off" class="d-flex" role="search" action="{{url('search-admin')}}" method="POST">
+                                    @csrf
+                                    <input class="form-control me-2" id="keywords" name="tukhoa" type="search" placeholder="Search" aria-label="Search">
+                                    <div id="sreach_ajax"></div>
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            
                             </div>
                         </div>
                 </nav>

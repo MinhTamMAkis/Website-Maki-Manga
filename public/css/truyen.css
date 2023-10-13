@@ -2,8 +2,10 @@
     width: 100%;
     
 }
+
 .images img{
-    width: 100%;
+    width: 350px;
+    height: 350px;
 }
 .bread_cumb{
     margin-top: 20px;
@@ -129,7 +131,19 @@
 
 
 
+    .hidden {
+        display: none;
+    }
 
+    #scrollButton {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #58391c;
+        padding: 5px;
+        border-radius: 5px;
+        
+    }
 
 
 
@@ -165,6 +179,9 @@
     @media (max-width: 769px)
     {
         .muclucchapter{
+            width: 100%;
+        }
+        .images img{
             width: 100%;
         }
         .bg-text {

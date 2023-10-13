@@ -40,8 +40,9 @@
                        
                             <!---------------- END Slider ------------------>
                             
-                        @yield('comic_new')
-                        @yield('content')
+                    @yield('comic_new')
+                    @yield('content')
+                    
                     </div>
                     <!---------------- Truyện Mới ------------------>
                     
@@ -58,6 +59,8 @@
                 </script>
                 <script type="text/javascript" src="{{asset('public/js/select_chapter.js')}}">
                 </script>
+                <script type="text/javascript" src="{{asset('public/js/main.js')}}">
+                </script>
                 <script type="text/javascript">
                 $(document).ready(function() {
                     const id = $(".bookmark").data("id"); // Get the id from the data attribute
@@ -65,9 +68,8 @@
                     if(localStorage.getItem('bookmark') != null) {
                         var data_bookmark = localStorage.getItem('bookmark');
                         var bookmarkedIds = JSON.parse(data_bookmark);
-                        var index = bookmarkedIds.indexOf(String(id));
-                        var valueAtIndex = bookmarkedIds[index];
-                        if (valueAtIndex == id) {
+                        var isBookmarked = bookmarkedIds.some(obj => obj.id === id);
+                        if (isBookmarked) {
                             $('.bookmark_color').css('background-color', '#9e540f').html("<i class='fas fa-bookmark'></i> Bookmarked");
                             
                     }
@@ -78,30 +80,41 @@
 
                  $(document).on('click', '.bookmark', function () {
                         const id = $(".bookmark").data("id");
+                        const title =$(".title_comic").val();
+                        const url =$(".url_comic").val();
+                        const img =$(".card-img-comic").attr('src');
+                        const item = {
+                            'id':id,
+                            'title':title,
+                            'url':url,
+                            'img':img
+                        }
+                        console.log(item);
                         if(localStorage.getItem('bookmark') == null) {
                             localStorage.setItem('bookmark', '[]');
                         }
 
                         var bookmarkedIds = JSON.parse(localStorage.getItem('bookmark'));
+                        var matches = $.grep(bookmarkedIds, function (obj) {
+                            return obj.id == id;
+                        })
+                        if(matches.length){
+                            bookmarkedIds = bookmarkedIds.filter(obj => obj.id !== id);
+                            $('.bookmark_color').css('background-color', '#B17B47').html("<i class='far fa-bookmark'></i> Bookmark");
+                        }else{
+                            
+                            bookmarkedIds.push(item);
 
-                        // Check if the id exists in the bookmarkedIds array
-                        var isIdExists = bookmarkedIds.includes(String(id));
-                        if (isIdExists) {
-                            // If id is bookmarked, remove it
-                            var index = bookmarkedIds.indexOf(String(id));
-                            if (index !== -1) {
-                                bookmarkedIds.splice(index, 1);
-                                localStorage.setItem('bookmark', JSON.stringify(bookmarkedIds));
-                                $('.bookmark_color').css('background-color', '#B17B47').html("<i class='far fa-bookmark'></i> Bookmark");
-                            }
-                        } else {
-                            // If id is not bookmarked, add it
-                            bookmarkedIds.push(String(id));
-                            localStorage.setItem('bookmark', JSON.stringify(bookmarkedIds));
-                            $('.bookmark_color').css('background-color', '#9e540f').html("<i class='fas fa-bookmark'></i> Bookmarked");
                             
 
+                            localStorage.setItem('bookmark',JSON.stringify(bookmarkedIds));
+                            $('.bookmark_color').css('background-color', '#9e540f').html("<i class='fas fa-bookmark'></i> Bookmarked");
+
+                            
                         }
+
+                        localStorage.setItem('bookmark',JSON.stringify(bookmarkedIds));
+                        
                     });
 </script>
 

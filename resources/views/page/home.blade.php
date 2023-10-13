@@ -1,7 +1,7 @@
         @extends('../welcome') 
             @section('slider')
                 @include('page.slider')
-            @endsection
+            @endsection 
 
             @section('comic_new')
                 @include('page.comic_new')
@@ -10,3 +10,7 @@
             @section('content')
                 @include('page.show_truyen_home')
             @endsection
+
+            
+            
+

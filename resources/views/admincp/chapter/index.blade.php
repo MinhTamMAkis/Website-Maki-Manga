@@ -35,7 +35,7 @@
                                 <td>{{$chapter->tieude}}</td>
                                 <td>{{$chapter->slug_chapter}}</td>
                                 <td>{{$chapter->tomtat}}</td>
-                                <td>{{$chapter->truyen->tentruyen}}</td>
+                                <td>{{$chapter->truyen->tentruyen ?? ''}}</td>
                                 <td >
                                     @if($chapter->kichhoat==0)
                                         <span class="text text-success">kich hoat</span>

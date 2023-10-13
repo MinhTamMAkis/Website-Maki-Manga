@@ -27,14 +27,13 @@ Route::get('/xem-truyen/{slug_truyen}/{slug_chapter}', [IndexController::class,'
 Route::post('/tim-kiem', [IndexController::class,'timkiem']);
 Route::post('/timkiem-ajax', [IndexController::class,'search_ajax']);
 
-
-Route::get('/book-mark',[IndexController::class,'bookmark'])->name('book-mark');
+Route::get('/bookmark',[IndexController::class,'bookmark']);
 
 Route::get('/truyen/chapter/create/{id}', [TruyenController::class,'createchapter'])->name('truyen.chapter.create');
 Route::get('/truyen/{id}/view_chapter', [TruyenController::class,'view_chapter'])->name('truyen.view_chapter');
 Auth::routes();
 Route::get('/admin', [HomeController::class, 'index'])->name('admin');
-
+Route::post('/search-admin', [HomeController::class, 'search'])->name('search');
     
 Route::resource('/danhmuc', DanhmucController::class);
 Route::resource('/theloai', TheLoaiController::class);

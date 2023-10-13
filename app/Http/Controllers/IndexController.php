@@ -142,9 +142,9 @@ class IndexController extends Controller
         $truyen = Truyen::orderBy('id','DESC')->where('kichhoat',0)->get();
         $danhmuc= DanhmucTruyen::orderBy('id','DESC')->get();
         $tukhoa = $data['tukhoa'];
-
+        $chapter = Chapter::orderBy('id','DESC')->get();
         $truyen_tk = Truyen::with('danhmuctruyen')->where('tentruyen','LIKE','%'.$tukhoa.'%')->get();
-        return view('page.timkiem')->with(compact('danhmuc','truyen','tukhoa','truyen_tk'));
+        return view('page.timkiem')->with(compact('danhmuc','truyen','tukhoa','truyen_tk','chapter'));
     }
 
     public function bookmark(Request $request){
@@ -154,4 +154,5 @@ class IndexController extends Controller
         $truyen = Truyen::with('chapter')->orderBy('id','DESC')->where('kichhoat', 0)->paginate(12);
         return view('page.bookmark')->with(compact('danhmuc','truyen','chapter'));
     }
+   
 }

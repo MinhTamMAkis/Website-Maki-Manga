@@ -38,7 +38,15 @@
                                 <td><img src="{{asset('public/upload/truyen/'.$truyen->hinhanh)}}" alt="" height="150" width="150"></td>
                                 <td>{{$truyen->slug_truyen}}</td>
                                 <td>{{$truyen->tomtat}}</td>
-                                <td>{{$truyen->danhmuctruyen->tendanhmuc}}</td>
+                                <td> 
+                                    @foreach($category_list as $key => $list)
+                                        @foreach($catogery as $key => $ct)
+                                            @if($list->truyen_id == $truyen->id && $ct->id == $list->danhmuc_id)
+                                                    {{$ct->tendanhmuc}}<br>
+                                            @endif
+                                        @endforeach
+                                    @endforeach
+                                </td>
                                 <td >
                                     @if($truyen->kichhoat==0)
                                         <span class="text text-success">kich hoat</span>

@@ -17,7 +17,7 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-12 ">
                                 <div class="images">
-                                    <img  src="{{ asset('public/upload/truyen/'.$truyen->hinhanh) }}" alt="" >
+                                    <img  class="card-img-comic" src="{{ asset('public/upload/truyen/'.$truyen->hinhanh) }}" alt="" >
                                 </div>
                                 
                             </div>
@@ -26,8 +26,10 @@
                                     <img  src="{{ asset('public/upload/truyen/'.$truyen->hinhanh) }}" alt="" >
                                 </div>
                                 <ul class="infortruyen bg-text">
-                                    <input type="hidden" value="{{$truyen->id}}" class="id_comic">
-                                    <li>Name : {{$truyen->tentruyen}}</li>
+                                    <input type="hidden" value="{{$truyen->tentruyen}}" class="title_comic">
+                                    <input type="hidden" value="{{\URL::current()}}" class="url_comic">
+                                    
+                                    <li >Name : {{$truyen->tentruyen}}</li>
                                     <li>Author : {{$truyen->tac_gia}}</li>
                                     <li class="category_list">
                                             @foreach($danhmuc as $key => $dm)

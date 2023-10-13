@@ -23,7 +23,9 @@ class TruyenController extends Controller
     {
         //
         $list_truyen = Truyen::with('danhmuctruyen')->orderBy('id','DESC')->get();
-        return view('admincp.truyen.index')->with(compact('list_truyen'));
+        $catogery= DanhmucTruyen::orderBy('id','DESC')->get();
+        $category_list = ThuocDanhMuc::orderBy('id','DESC')->get();
+        return view('admincp.truyen.index')->with(compact('list_truyen','catogery','category_list'));
     }
 
     /**
@@ -139,7 +141,7 @@ class TruyenController extends Controller
                 'tentruyen' => 'required|max:255',
                 'slug_truyen' => 'required|max:255',
                 'tomtat'  => 'required',
-                'hinhanh' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:50000|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+                'hinhanh' => 'image|mimes:jpg,png,jpeg,gif,svg|max:50000|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
                 'kichhoat' => 'required',
                 'danhmuc' => 'required'
 
@@ -148,7 +150,6 @@ class TruyenController extends Controller
                 'tomtat.required' => 'Tóm tắt truyện phải có ',
                 'tentruyen.unique' => 'Tên truyện đã có ',
                 'slug_truyen.unique' => 'Slug truyện đã có',
-                'hinhanh.required' => 'Hình ảnh phải có'
                 
 
             ]
@@ -160,11 +161,15 @@ class TruyenController extends Controller
     $truyen->tomtat = $data['tomtat'];
     $truyen->danhmuc_id= $data['danhmuc'];
     $truyen->kichhoat = $data['kichhoat'];
-
-    
     //themanhvaofloder
+    
+    foreach($data['danhmuc'] as $key=> $value){
+        $truyen->danhmuc_id = $value[0];
+
+    }
+    
     $get_image = $request->hinhanh;
-    if($get_image){
+    if($get_image = $request->hinhanh){
         $path ='public/upload/truyen/'.$truyen->hinhanh;
         if(file_exists($path)){
             unlink($path);
@@ -175,9 +180,11 @@ class TruyenController extends Controller
         $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
         $get_image->move($path,$new_image);
         $truyen->hinhanh = $new_image;
+    }else{
+        $get_image = $truyen->hinhanh ;
     }
-
-
+    ThuocDanhMuc::with('truyen')->where('truyen_id',$truyen->id)->delete();
+    $truyen->thuocdanhmuctruyen()->attach($data['danhmuc']);
     $truyen->save();
     return redirect('truyen')->with('status','Cập nhật truyện thành công');
         
@@ -189,18 +196,25 @@ class TruyenController extends Controller
     public function destroy(string $id)
     {
         //
-        $truyen = Truyen::find($id);
+        $truyen = Truyen::find($id);   
         $path ='public/upload/truyen/'.$truyen->hinhanh;
         // dd($path);
         if(file_exists($path)){
             unlink($path);
         }
         //xóa thứ mục có id truyện
-        $check_path =public_path('upload/chapter/'.$truyen->id);
+        $check_path =public_path('upload/chapter/'.$truyen->slug_truyen);
         if(File::exists($check_path)){
+            
             File::deleteDirectory($check_path);
+            
         }
 
+        
+       
+        
+        Chapter::with('truyen')->where('truyen_id',$truyen->id)->delete();
+        ThuocDanhMuc::with('truyen')->where('truyen_id',$truyen->id)->delete();
         Truyen::find($id)->delete();
         return redirect()->back()->with('status','Xóa truyện thành công');
     }

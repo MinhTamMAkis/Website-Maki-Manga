@@ -42,7 +42,7 @@
    
 </style>
 
-
+@vite(['public/css/ajax.css'])
 <nav class="nav navbar navbar-expand-lg ">
                     <div class="container">
                         <a class="navbar-brand" href="#">Maki</a>
@@ -67,74 +67,13 @@
                             </li>
                             
                             <li class="nav-item">
-                                
-        <a id="bookmark_btn" type="submit" class="nav-link bookmark_btn" aria-current="page" href="{{url('/book-mark')}}">BOOKMARK</a>
-
-
-                        
-            
-                                
-                                
-                                
+                                    <a id="bookmark_btn" class="nav-link" aria-current="page" href="{{url('/bookmark')}}" >BOOKMARK</a>
                             </li>
 
                         </ul>
 
                         <style>
-                            form{
-                                position: relative;
-                            }
-                            #sreach_ajax{
-                                position: absolute;
-                                top: 50px;
-                                right: 0;
-                            }
-                            .search-dropdow {
-                                list-style: none;
-                                max-height: 500px;
-                                width:500px;
-                                border-radius: 10px;
-                                overflow-x: hidden;
-                                overflow-y: scroll;
-                            }
-                            .search-dropdow::-webkit-scrollbar {
-                                display: none;
-                            }
-
-                            .item-search {
-                                border-radius: 10px;
-                                background: #fff;   
-                                border-bottom: #B17B47 2px solid;
-                                margin-bottom: 5px;
-                                
-                            }
-                            .item-search a{
-                                text-decoration: none;
-                                color: black;
-                            }
-                            .content-search{
-                                margin-left:10px;
-                                width: 100%;
-
-                            }
-                            .figure-img{
-                                width:100px;
-                                height:100px;
-                                margin:0;
-                                
-                            }
-                            .figure-img img{
-                                border-radius: 5px;
-                                width:100%;
-                                height:100%;
-                            }
-                            .the_loai{
-                                border-radius: 5px;
-                                margin-left:10px;
-                                padding:5px;
-                                border: black 1px solid;
-                            
-                            }
+                           
                         </style>
                         <form autocomplete="off" class="d-flex" role="search" action="{{url('tim-kiem')}}" method="POST">
                             @csrf
@@ -161,6 +100,7 @@
                                 method:'POST',
                                 data:{keywords:keywords,_token:_token},
                                 success:function(data){
+                                    
                                     $('#sreach_ajax').fadeIn();
                                     $('#sreach_ajax').html(data);
                                 }
@@ -181,10 +121,5 @@
                         $('#sreach_ajax').fadeOut();
                         
                     });
-
-                    
-
-
-
                 </script>
 
