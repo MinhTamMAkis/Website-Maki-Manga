@@ -24,8 +24,9 @@ class IndexController extends Controller
             $truyen = Truyen::where('kichhoat',0)->where('tentruyen','LIKE','%'.$data['keywords'].'%')->get();
             $output =' <ul class="search-dropdow" style="display:block;">';
             $danhmuc = DanhmucTruyen::with('truyen')->where('id','ASC')->get();
+            
             foreach ($truyen as $key => $tr){
-                $category = DanhmucTruyen::find($tr->danhmuc_id);
+                $thuocdanhmuc= ThuocDanhMuc::orderBy('id','DESC')->where('truyen_id',$tr->id)->get();
                 $output .='<li class="item-search">
                             <a href="'.url('xem-truyen/'.$tr->slug_truyen).'"> 
                                 <div class="d-flex">
@@ -33,14 +34,22 @@ class IndexController extends Controller
                                         <img class="search-img" src="'. asset('public/upload/truyen/'. $tr->hinhanh).'">
                                     </figure>
                                     <div class="content-search">
-                                        <p>'.$tr->tentruyen.'</p>
-                                        <div class="d-flex"> 
-                                            <p class="the_loai">
-                                                '.
-                                                $category->tendanhmuc
-                                                .'
-                                            </p>
-                                        </div>
+                                        <p>';
+
+                                            if(strlen($tr->tentruyen) <=100){
+                                                $output.=  $tr->tentruyen;
+
+                                            }else{
+                                                $output.= substr($tr->tentruyen,0,100).'...';
+                                            }
+                                        
+                $output.=               '</p>
+                                        <div class="d-flex">';
+                                            foreach($thuocdanhmuc as $key => $dm){
+                                                    $category = DanhmucTruyen::find($dm->danhmuc_id);
+                $output.=                           '<p class="the_loai">'. $category->tendanhmuc.'</p>';
+                                            }
+                $output.=               '</div>
                                     </div>
                                 </div>
                             
@@ -103,11 +112,10 @@ class IndexController extends Controller
         
         $thuocdanhmuc= ThuocDanhMuc::orderBy('id','DESC')->where('truyen_id',$truyen->id)->get();
         
-
         $chapter_dau = Chapter::with('truyen')->orderBy('id','ASC')->where('truyen_id',$truyen->id)->first();
         $chapter_cuoi = Chapter::with('truyen')->orderBy('id','DESC')->where('truyen_id',$truyen->id)->first();
-        $cungdanhmuc = Truyen::with('danhmuctruyen')->where('danhmuc_id',$truyen->danhmuctruyen->id)->whereNotIn('id',[$truyen->id])->get();
-        return view ('page.truyen')->with(compact('danhmuc','truyen','chapter','cungdanhmuc','chapter_dau','thuocdanhmuc','chapter_asc','chapter_cuoi'));
+        $category_list = Truyen::with('thuocdanhmuctruyen')->whereNotIn('id',[$truyen->id])->get();
+        return view ('page.truyen')->with(compact('danhmuc','truyen','chapter','category_list','chapter_dau','thuocdanhmuc','chapter_asc','chapter_cuoi'));
     }
 
     public function xemchapter(  $slug_truyen,$slug_chapter){

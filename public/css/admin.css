@@ -1,0 +1,11 @@
+.table{
+    --bs-table-striped-bg: rgb(13 110 253 / 16%) !important;
+}
+#create,#create_data,#update,#update_data{
+    display: table-cell;
+}
+@media (max-width:1000px){
+    #create,#create_data,#update,#update_data{
+        display: none;
+    }
+}

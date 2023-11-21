@@ -230,8 +230,4 @@ class ChapterController extends Controller
 
     }
 
-
-
-    
-    
 }

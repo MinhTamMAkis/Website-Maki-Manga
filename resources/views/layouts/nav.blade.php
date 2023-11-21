@@ -9,27 +9,25 @@
                                 <!-- Thể loại -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Thê loại
+                                    Genre
                                 </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{route('danhmuc.create')}}">Thêm danh mục </a></li>
-                                        <li><a class="dropdown-item" href="{{route('danhmuc.index')}}">Liệt kê danh mục</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><a class="dropdown-item" href="{{route('danhmuc.create')}}">Add Genre </a></li>
+                                        <li><a class="dropdown-item" href="{{route('danhmuc.index')}}">List Genre</a></li>
+                                        <li class="bg-primary"><hr class="dropdown-divider"></li>
+                                        
                                     </ul>
                                 </li>
-                            
                                 
                                 <!-- Truyện -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Truyện 
+                                    Manga/Manhwa
                                 </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{route('truyen.create')}}">Thêm truyện </a></li>
-                                        <li><a class="dropdown-item" href="{{route('truyen.index')}}">Liệt kê truyện</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{route('truyen.create')}}">Add Manga/Manhwa</a></li>
+                                        <li><a class="dropdown-item" href="{{route('truyen.index')}}">List Manga/Manhwa</a></li>
+                                        <li class="bg-primary"><hr class="dropdown-divider"></li>
                                     </ul>
                                 </li>
                                 <!-- CHAPTER -->
@@ -38,10 +36,9 @@
                                     Chapter 
                                 </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="{{route('chapter.create')}}">Thêm chapter </a></li>
-                                        <li><a class="dropdown-item" href="{{route('chapter.index')}}">Liệt kê chapter</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><a class="dropdown-item" href="{{route('chapter.create')}}">Add chapter </a></li>
+                                        <li><a class="dropdown-item" href="{{route('chapter.index')}}">List chapter</a></li>
+                                        <li class="bg-primary"><hr class="dropdown-divider"></li>
                                     </ul>
                                 </li>
                                 

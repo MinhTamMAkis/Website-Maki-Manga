@@ -14,7 +14,7 @@
                         $count =count($truyen);
                     @endphp
                     @if($count==0)
-                        <p>Không tìm thấy .....</p>
+                        <p>Can not find .....</p>
                     @else
                     <table class="table table-striped">
                         <thead>

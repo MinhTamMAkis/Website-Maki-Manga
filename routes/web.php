@@ -6,6 +6,7 @@ use App\Http\Controllers\DanhmucController;
 use App\Http\Controllers\TruyenController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\testcontroller;
 use App\Http\Controllers\TheLoaiController;
 
 /*
@@ -18,7 +19,7 @@ use App\Http\Controllers\TheLoaiController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/test',[testcontroller::class,'index']);
 Route::get('/',[IndexController::class,'home']);
 Route::get('/all_comic',[IndexController::class,'comic_all']);
 Route::get('/danh-muc/{slug}', [IndexController::class,'danhmuc']);
@@ -34,7 +35,8 @@ Route::get('/truyen/{id}/view_chapter', [TruyenController::class,'view_chapter']
 Auth::routes();
 Route::get('/admin', [HomeController::class, 'index'])->name('admin');
 Route::post('/search-admin', [HomeController::class, 'search'])->name('search');
-    
+
+
 Route::resource('/danhmuc', DanhmucController::class);
 Route::resource('/theloai', TheLoaiController::class);
 Route::resource('/truyen', TruyenController::class);

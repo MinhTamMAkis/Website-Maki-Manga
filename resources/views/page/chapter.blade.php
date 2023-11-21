@@ -29,17 +29,17 @@
             
                 <div>
                     <div class="chap-scroll row d-flex justify-content-center" >
-                            <div class="col-md-3 d-flex flex-row-reverse">
+                            <div class="col-3 d-flex flex-row-reverse">
                                     <p><a class="ml-auto btn btn-primary {{$chapter->id==$min_id->id ? 'isDisable' : ''}}" href="{{url('xem-truyen/'.$chapter->truyen->slug_truyen.'/'.$previous_chapter)}}">Tập Trước</a></p>
                                 </div>
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <select class="form-select select-chapter" name="select-chapter">
                                     @foreach($allchapter as $key => $chap)
                                         <option value="{{url('xem-truyen/'.$chap->truyen->slug_truyen.'/'.$chap->slug_chapter)}}">{{$chap->tieude}} </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-3">
                             <p><a class="btn btn-primary {{$chapter->id==$max_id->id ? 'isDisable' : ''}}" href="{{url('xem-truyen/'.$chapter->truyen->slug_truyen.'/'.$next_chapter)}}">Tập Sau</a></p>
                             </div>
                     </div>
@@ -47,20 +47,21 @@
                     <!-- Button  -->
 
                     <!-- Content -->
-                    <div class="d-flex justify-content-center text-center">
+                    
                         
                         @php
                             $images = json_decode($chapter->hinhanh, true);
-                            asort($images); // Sort the images array alphabetically by their filenames
+                            asort($images, SORT_NUMERIC); 
+                            $images = array_reverse($images);
                         @endphp
                         
                         @foreach($images as $image)
-                            <div class="noidung mt-3 d-flex justify-content-center text-center" >
-                                <img src="{{ URL::to($image) }}" alt="" width="70%">
+                            <div class="noidung d-flex justify-content-center text-center" >
+                                <img src="{{ URL::to($image) }}" alt="image" width="100%">
                             </div>
                         @endforeach
 
-                    </div>
+                    
                 </div>
 
                 

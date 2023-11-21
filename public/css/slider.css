@@ -25,14 +25,18 @@
     object-fit: cover;
     border-radius: 8px;
 }
+.card_slider a {
+  text-decoration: none;
+}
 .content-slider{
     padding-left: 5px;
-    
+    padding-right: 5px;
 }
 .content-slider p{
     padding-top: 10px;
     font-size: 0.7rem;
-    text-align: center;
+    text-align: justify;
+    word-break: break-all;
     align-items: center;
     font-family: 'Pacifico', cursive;
     font-family: 'Playfair Display', serif;
@@ -47,13 +51,15 @@
     bottom: 5px;
     
 }
-
-.content-slider .button-click a{
-    
-    align-items: center;
-    text-align: center;
-    
+.content-slider a:hover .button-click .btn-sm{
+        background-color: #6F3811;
 }
+.content-slider .button-click .btn-sm{
+      border: none;
+      background-color: #7C4519;
+      color: #fff;
+}
+
 .circle {
     width: 100px;
     height: 100px;

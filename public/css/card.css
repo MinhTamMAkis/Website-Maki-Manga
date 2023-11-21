@@ -71,7 +71,7 @@
     cursor: pointer;
 }
 .Name p {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -90,10 +90,9 @@
 .card-comic:hover .chapter {
     display: block;
     position: absolute;
-    width: 95%;
-    border: solid 1px #DADADA;
-    background: radial-gradient(#6F3811,#B17B47);
-    margin: 5px;
+    width: 96%;
+    background: #AC7C4C;
+    margin: 3px;
     border-radius: 15px;
     bottom: 0;
    

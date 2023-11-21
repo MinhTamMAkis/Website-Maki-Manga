@@ -2,6 +2,11 @@ body {
     background-color: #16151D !important;
 }
 
+
+
+.logo img {
+    width: 50px;
+}
 .btn-primary {
     --bs-btn-border-color: none !important;
 }
@@ -19,7 +24,7 @@ body {
 .breadcrumb-item a{
     border: #9e540f 1px solid;
     padding: 5px;
-    border-radius: 35% 10%;
+    border-radius: 15px;
     text-decoration: none;
 }
 .breadcrumb-item a {

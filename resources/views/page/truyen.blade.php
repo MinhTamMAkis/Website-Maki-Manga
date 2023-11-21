@@ -5,8 +5,24 @@
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{url('danh-muc/'.$truyen->danhmuctruyen->slug_)}}">{{$truyen->danhmuctruyen->tendanhmuc}}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{url('xem-truyen/'.$truyen->slug_truyen)}}">{{$truyen->tentruyen}}</a></li>
+                    @foreach($danhmuc as $key => $dm)
+                        @foreach($thuocdanhmuc as $key => $value)
+                            @if( $dm->id == $value->danhmuc_id)
+                                <li class="breadcrumb-item"> <a href="{{url('danh-muc/'.$dm->slug_)}}">{{$dm->tendanhmuc}}</a></li>
+                            @endif
+                        @endforeach
+                    @endforeach
+                    
+                    <li class="breadcrumb-item active" aria-current="page"><a href="{{url('xem-truyen/'.$truyen->slug_truyen)}}">
+                        @php
+                            if(strlen($truyen->tentruyen) <=40){
+                            echo $truyen->tentruyen;
+
+                        }else{
+                            echo substr($truyen->tentruyen,0,40).'...';
+                            }
+                        @endphp
+                    </a></li>
                 </ol>
                 </nav>
             </div>
@@ -68,7 +84,7 @@
                                             @endif
                                         </div>
                                         @else
-                                        <button ><a href="" class="btn btn-primary ">There are no chapters yet</a></button>
+                                        <button ><a href="" class="btn btn-primary btn-comic">There are no chapters yet</a></button>
                                 @endif
                                 
                                 <h4 class="text-light mt-4">CHAPTERS</h4>

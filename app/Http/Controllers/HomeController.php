@@ -33,10 +33,11 @@ class HomeController extends Controller
         $truyen = Truyen::orderBy('id','DESC')->where('kichhoat',0)->get();
         $danhmuc= DanhmucTruyen::orderBy('id','DESC')->get();
         $tukhoa = $data['tukhoa'];
-
         $truyen_tk = Truyen::with('danhmuctruyen')->where('tentruyen','LIKE','%'.$tukhoa.'%')->get();
         return view('admincp.truyen.search')->with(compact('danhmuc','truyen','tukhoa','truyen_tk'));
     }
+    
+
     
 }
 

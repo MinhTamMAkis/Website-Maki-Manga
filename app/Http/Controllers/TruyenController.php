@@ -22,7 +22,7 @@ class TruyenController extends Controller
     public function index()
     {
         //
-        $list_truyen = Truyen::with('danhmuctruyen')->orderBy('id','DESC')->get();
+        $list_truyen = Truyen::with('danhmuctruyen')->orderBy('id','DESC')->paginate(6);
         $catogery= DanhmucTruyen::orderBy('id','DESC')->get();
         $category_list = ThuocDanhMuc::orderBy('id','DESC')->get();
         return view('admincp.truyen.index')->with(compact('list_truyen','catogery','category_list'));
@@ -35,7 +35,7 @@ class TruyenController extends Controller
     {
         //
 
-        $danhmuc  = DanhmucTruyen::orderBy('id','DESC')->get();
+        $danhmuc  = DanhmucTruyen::orderBy('id','DESC')->where('kichhoat',0)->get();
         return view('admincp.truyen.create')->with(compact('danhmuc'));
     }
 
@@ -95,6 +95,7 @@ class TruyenController extends Controller
         $truyen->tenkhac = $data['tenkhac'];
     }
     $truyen->update_at = Carbon::now('Asia/Ho_Chi_Minh');
+    $truyen->create_at = Carbon::now('Asia/Ho_Chi_Minh');
     //themanhvaofloder
     $get_image = $request->hinhanh;
     $path ='public/upload/truyen/';

@@ -30,24 +30,25 @@
                             @foreach($danhmuctruyen as $key => $danhmuc)
                             <tr>
                                 <th scope="row">{{$key}}</th>
-                                <td>{{$danhmuc->tendanhmuc}}</td>
+                                <td class="col-2">{{$danhmuc->tendanhmuc}}</td>
                                 <td>{{$danhmuc->slug_}}</td>
                                 <td>{{$danhmuc->mota}}</td>
-                                <td>
+                                <td class="col-2">
                                     @if($danhmuc->kichhoat==0)
                                         <span class="text text-success">kich hoat</span>
                                     @else
                                         <span class="text text-danger">Khong kich hoat</span>
                                     @endif
                                 </td>
-                                <td>
+                                <td >
+                                    <div class="d-flex gap-1">
                                     <a href="{{route('danhmuc.edit',[$danhmuc->id])}}" class="btn btn-primary">edit</a>
-
-                                    <form action="{{route('danhmuc.destroy',[$danhmuc->id])}}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button onclick="return confirm('Bạn chắc chắn muốn xóa danh mục này ?')" class="btn btn-danger">delete</button>
-                                    </form>
+                                        <form action="{{route('danhmuc.destroy',[$danhmuc->id])}}" method="POST" >
+                                            @method('DELETE')
+                                            @csrf                      
+                                            <button onclick="return confirm('Are you sure you want to delete this Genre?')" class="btn btn-danger" title="Delete Genre Confirmation">delete</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

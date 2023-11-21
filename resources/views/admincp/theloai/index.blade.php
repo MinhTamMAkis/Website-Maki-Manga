@@ -35,9 +35,9 @@
                                 <td>{{$tl->mota}}</td>
                                 <td>
                                     @if($tl->kichhoat==0)
-                                        <span class="text text-success">kich hoat</span>
+                                        <span class="text text-success">activated</span>
                                     @else
-                                        <span class="text text-danger">Khong kich hoat</span>
+                                        <span class="text text-danger">not activated</span>
                                     @endif
                                 </td>
                                 <td class="d-flex gap-1">

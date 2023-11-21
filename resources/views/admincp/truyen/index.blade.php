@@ -7,25 +7,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Danh sách danh mục</div>
-
+                
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('You are logged in!') }}
+                    
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">NAME</th>
                                 <th scope="col">IMAGE</th>
-                                <th scope="col">SLUG</th>
-                                <th scope="col">SUMMARY</th>
+                                <th scope="col">NAME</th>
                                 <th scope="col">CATEGORY</th>
                                 <th scope="col">STATUS</th>
-                                <th scope="col">UPDATE DAY</th>
+                                <th scope="col" id="create">CREATE</th>
+                                <th scope="col" id="update">UPDATE</th>
                                 <th scope="col">MANAGE</th>
                             </tr>
                         </thead>
@@ -34,11 +33,10 @@
                             @foreach($list_truyen as $key => $truyen)
                             <tr>
                                 <th scope="row">{{$key}}</th>
-                                <td>{{$truyen->tentruyen}}</td>
+                                
                                 <td><img src="{{asset('public/upload/truyen/'.$truyen->hinhanh)}}" alt="" height="150" width="150"></td>
-                                <td>{{$truyen->slug_truyen}}</td>
-                                <td>{{$truyen->tomtat}}</td>
-                                <td> 
+                                <td style="max-width: 200px;">{{$truyen->tentruyen}}</td>
+                                <td>
                                     @foreach($category_list as $key => $list)
                                         @foreach($catogery as $key => $ct)
                                             @if($list->truyen_id == $truyen->id && $ct->id == $list->danhmuc_id)
@@ -49,12 +47,13 @@
                                 </td>
                                 <td >
                                     @if($truyen->kichhoat==0)
-                                        <span class="text text-success">kich hoat</span>
+                                        <span class="text text-success">activated</span>
                                     @else
-                                        <span class="text text-danger">Khong kich hoat</span>
+                                        <span class="text text-danger">not activated</span>
                                     @endif
                                 </td>
-                                <th scope="col"><p>{{$truyen->update_at}}</p></th>
+                                <th scope="col" id="create_data"><p>{{$truyen->create_at}}</p></th>
+                                <th scope="col" id="update_data"><p>{{$truyen->update_at}}</p></th>
                                 <td>
                                     <div class="d-flex gap-1">
                                         <a href="{{route('truyen.edit',[$truyen->id])}}" class="btn btn-primary">Edit</a>
@@ -79,10 +78,14 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        
                     </table>
+                    <div class="d-flex justify-content-center">{{$list_truyen->links()}}</div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

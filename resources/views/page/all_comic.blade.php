@@ -55,7 +55,7 @@
                                                         @php
                                                             $chapterCount++; 
                                                         @endphp
-                                                            <p>Chưa có chapter</p>       
+                                                            <p>No chapters yet</p>       
                                                     
                                                     @endif
                                                 @endforeach

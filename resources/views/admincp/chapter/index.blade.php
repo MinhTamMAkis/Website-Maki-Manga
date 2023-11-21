@@ -14,7 +14,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('You are logged in!') }}
                     <table class="table table-striped">
                         <thead>
                             <tr>

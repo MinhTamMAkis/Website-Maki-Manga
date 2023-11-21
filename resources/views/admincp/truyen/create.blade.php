@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="kichhot" class="form-label">Danh mục truyện</label>
+                            <label for="danhmuc" class="form-label">Danh mục truyện</label>
                                 @foreach($danhmuc as $key => $muc)
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="danhmuc_{{$muc->id}}" value="{{$muc->id}}" name="danhmuc[]">

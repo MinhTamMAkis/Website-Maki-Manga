@@ -30,7 +30,7 @@
 
 
 .view_infor img {
-    max-width: 100%;
+    width: 1200px;
     z-index: -1;
     /* Add the blur effect */
     filter: blur(8px);
